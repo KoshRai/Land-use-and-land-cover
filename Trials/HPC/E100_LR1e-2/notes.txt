@@ -1,0 +1,4 @@
+Decaying LR
+Model checkpointing
+Focal loss
+METRICS!!!

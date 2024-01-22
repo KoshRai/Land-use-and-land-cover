@@ -1,0 +1,16 @@
+Questions about the data:
+	- Try on the original Sentinel-1 SAR Images, instead of 8bit
+
+Overfitting, even with massive amounts of dropout
+
+Lengthy training process, try using early stopping rounds based on val loss.
+
+Training loss plateaus, and outputs still aren't comprehensible, try less regularisation/less LR decay?
+
+!!! Try using DataParallelism with Pytorch, to utilise multiple GPU's (training speed might scale linearly with # of GPU's, ignoring memory overhead since A100s with NVLink are supposed to be "pooling" memory)
+
+If time permits, try on regular segmentation datasets, like COCO/cityscapes.
+	How is segmenting SAR images different from segmenting for COCO, in terms of NNs?
+	Try comparing with EuroSAT benchmarks https://paperswithcode.com/dataset/eurosat
+	
+Check data augmentation

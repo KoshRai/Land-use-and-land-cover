@@ -1,0 +1,481 @@
+Device: cuda
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+Network                                  [1, 5, 256, 256]          --
+├─Sequential: 1-1                        [1, 64, 252, 252]         --
+│    └─Conv2d: 2-1                       [1, 64, 254, 254]         1,792
+│    └─ReLU: 2-2                         [1, 64, 254, 254]         --
+│    └─Conv2d: 2-3                       [1, 64, 252, 252]         36,928
+│    └─ReLU: 2-4                         [1, 64, 252, 252]         --
+│    └─BatchNorm2d: 2-5                  [1, 64, 252, 252]         128
+├─MaxPool2d: 1-2                         [1, 64, 126, 126]         --
+├─Sequential: 1-3                        [1, 128, 122, 122]        --
+│    └─Conv2d: 2-6                       [1, 128, 124, 124]        73,856
+│    └─ReLU: 2-7                         [1, 128, 124, 124]        --
+│    └─Conv2d: 2-8                       [1, 128, 122, 122]        147,584
+│    └─ReLU: 2-9                         [1, 128, 122, 122]        --
+│    └─BatchNorm2d: 2-10                 [1, 128, 122, 122]        256
+├─MaxPool2d: 1-4                         [1, 128, 61, 61]          --
+├─Sequential: 1-5                        [1, 256, 57, 57]          --
+│    └─Conv2d: 2-11                      [1, 256, 59, 59]          295,168
+│    └─ReLU: 2-12                        [1, 256, 59, 59]          --
+│    └─Conv2d: 2-13                      [1, 256, 57, 57]          590,080
+│    └─ReLU: 2-14                        [1, 256, 57, 57]          --
+│    └─BatchNorm2d: 2-15                 [1, 256, 57, 57]          512
+├─MaxPool2d: 1-6                         [1, 256, 28, 28]          --
+├─Sequential: 1-7                        [1, 512, 24, 24]          --
+│    └─Conv2d: 2-16                      [1, 512, 26, 26]          1,180,160
+│    └─ReLU: 2-17                        [1, 512, 26, 26]          --
+│    └─Conv2d: 2-18                      [1, 512, 24, 24]          2,359,808
+│    └─ReLU: 2-19                        [1, 512, 24, 24]          --
+│    └─BatchNorm2d: 2-20                 [1, 512, 24, 24]          1,024
+├─MaxPool2d: 1-8                         [1, 512, 12, 12]          --
+├─Sequential: 1-9                        [1, 1024, 8, 8]           --
+│    └─Conv2d: 2-21                      [1, 1024, 10, 10]         4,719,616
+│    └─ReLU: 2-22                        [1, 1024, 10, 10]         --
+│    └─Conv2d: 2-23                      [1, 1024, 8, 8]           9,438,208
+│    └─ReLU: 2-24                        [1, 1024, 8, 8]           --
+│    └─BatchNorm2d: 2-25                 [1, 1024, 8, 8]           2,048
+├─Dropout2d: 1-10                        [1, 1024, 8, 8]           --
+├─Sequential: 1-11                       [1, 512, 12, 12]          --
+│    └─ConvTranspose2d: 2-26             [1, 512, 10, 10]          4,719,104
+│    └─ReLU: 2-27                        [1, 512, 10, 10]          --
+│    └─ConvTranspose2d: 2-28             [1, 512, 12, 12]          2,359,808
+│    └─ReLU: 2-29                        [1, 512, 12, 12]          --
+│    └─BatchNorm2d: 2-30                 [1, 512, 12, 12]          1,024
+├─MaxUnpool2d: 1-12                      [1, 512, 24, 24]          --
+├─Sequential: 1-13                       [1, 256, 28, 28]          --
+│    └─ConvTranspose2d: 2-31             [1, 256, 26, 26]          2,359,552
+│    └─ReLU: 2-32                        [1, 256, 26, 26]          --
+│    └─ConvTranspose2d: 2-33             [1, 256, 28, 28]          590,080
+│    └─ReLU: 2-34                        [1, 256, 28, 28]          --
+│    └─BatchNorm2d: 2-35                 [1, 256, 28, 28]          512
+├─MaxUnpool2d: 1-14                      [1, 256, 57, 57]          --
+├─Sequential: 1-15                       [1, 128, 61, 61]          --
+│    └─ConvTranspose2d: 2-36             [1, 128, 59, 59]          589,952
+│    └─ReLU: 2-37                        [1, 128, 59, 59]          --
+│    └─ConvTranspose2d: 2-38             [1, 128, 61, 61]          147,584
+│    └─ReLU: 2-39                        [1, 128, 61, 61]          --
+│    └─BatchNorm2d: 2-40                 [1, 128, 61, 61]          256
+├─MaxUnpool2d: 1-16                      [1, 128, 122, 122]        --
+├─Sequential: 1-17                       [1, 64, 126, 126]         --
+│    └─ConvTranspose2d: 2-41             [1, 64, 124, 124]         147,520
+│    └─ReLU: 2-42                        [1, 64, 124, 124]         --
+│    └─ConvTranspose2d: 2-43             [1, 64, 126, 126]         36,928
+│    └─ReLU: 2-44                        [1, 64, 126, 126]         --
+│    └─BatchNorm2d: 2-45                 [1, 64, 126, 126]         128
+├─MaxUnpool2d: 1-18                      [1, 64, 252, 252]         --
+├─Sequential: 1-19                       [1, 5, 256, 256]          --
+│    └─ConvTranspose2d: 2-46             [1, 5, 254, 254]          5,765
+│    └─ReLU: 2-47                        [1, 5, 254, 254]          --
+│    └─ConvTranspose2d: 2-48             [1, 5, 256, 256]          230
+│    └─ReLU: 2-49                        [1, 5, 256, 256]          --
+│    └─BatchNorm2d: 2-50                 [1, 5, 256, 256]          10
+├─Softmax: 1-20                          [1, 5, 256, 256]          --
+==========================================================================================
+Total params: 29,805,621
+Trainable params: 29,805,621
+Non-trainable params: 0
+Total mult-adds (G): 20.68
+==========================================================================================
+Input size (MB): 0.79
+Forward/backward pass size (MB): 223.40
+Params size (MB): 119.22
+Estimated Total Size (MB): 343.41
+==========================================================================================
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+Network                                  [1, 5, 256, 256]          --
+├─Sequential: 1-1                        [1, 64, 252, 252]         --
+│    └─Conv2d: 2-1                       [1, 64, 254, 254]         1,792
+│    └─ReLU: 2-2                         [1, 64, 254, 254]         --
+│    └─Conv2d: 2-3                       [1, 64, 252, 252]         36,928
+│    └─ReLU: 2-4                         [1, 64, 252, 252]         --
+│    └─BatchNorm2d: 2-5                  [1, 64, 252, 252]         128
+├─MaxPool2d: 1-2                         [1, 64, 126, 126]         --
+├─Sequential: 1-3                        [1, 128, 122, 122]        --
+│    └─Conv2d: 2-6                       [1, 128, 124, 124]        73,856
+│    └─ReLU: 2-7                         [1, 128, 124, 124]        --
+│    └─Conv2d: 2-8                       [1, 128, 122, 122]        147,584
+│    └─ReLU: 2-9                         [1, 128, 122, 122]        --
+│    └─BatchNorm2d: 2-10                 [1, 128, 122, 122]        256
+├─MaxPool2d: 1-4                         [1, 128, 61, 61]          --
+├─Sequential: 1-5                        [1, 256, 57, 57]          --
+│    └─Conv2d: 2-11                      [1, 256, 59, 59]          295,168
+│    └─ReLU: 2-12                        [1, 256, 59, 59]          --
+│    └─Conv2d: 2-13                      [1, 256, 57, 57]          590,080
+│    └─ReLU: 2-14                        [1, 256, 57, 57]          --
+│    └─BatchNorm2d: 2-15                 [1, 256, 57, 57]          512
+├─MaxPool2d: 1-6                         [1, 256, 28, 28]          --
+├─Sequential: 1-7                        [1, 512, 24, 24]          --
+│    └─Conv2d: 2-16                      [1, 512, 26, 26]          1,180,160
+│    └─ReLU: 2-17                        [1, 512, 26, 26]          --
+│    └─Conv2d: 2-18                      [1, 512, 24, 24]          2,359,808
+│    └─ReLU: 2-19                        [1, 512, 24, 24]          --
+│    └─BatchNorm2d: 2-20                 [1, 512, 24, 24]          1,024
+├─MaxPool2d: 1-8                         [1, 512, 12, 12]          --
+├─Sequential: 1-9                        [1, 1024, 8, 8]           --
+│    └─Conv2d: 2-21                      [1, 1024, 10, 10]         4,719,616
+│    └─ReLU: 2-22                        [1, 1024, 10, 10]         --
+│    └─Conv2d: 2-23                      [1, 1024, 8, 8]           9,438,208
+│    └─ReLU: 2-24                        [1, 1024, 8, 8]           --
+│    └─BatchNorm2d: 2-25                 [1, 1024, 8, 8]           2,048
+├─Dropout2d: 1-10                        [1, 1024, 8, 8]           --
+├─Sequential: 1-11                       [1, 512, 12, 12]          --
+│    └─ConvTranspose2d: 2-26             [1, 512, 10, 10]          4,719,104
+│    └─ReLU: 2-27                        [1, 512, 10, 10]          --
+│    └─ConvTranspose2d: 2-28             [1, 512, 12, 12]          2,359,808
+│    └─ReLU: 2-29                        [1, 512, 12, 12]          --
+│    └─BatchNorm2d: 2-30                 [1, 512, 12, 12]          1,024
+├─MaxUnpool2d: 1-12                      [1, 512, 24, 24]          --
+├─Sequential: 1-13                       [1, 256, 28, 28]          --
+│    └─ConvTranspose2d: 2-31             [1, 256, 26, 26]          2,359,552
+│    └─ReLU: 2-32                        [1, 256, 26, 26]          --
+│    └─ConvTranspose2d: 2-33             [1, 256, 28, 28]          590,080
+│    └─ReLU: 2-34                        [1, 256, 28, 28]          --
+│    └─BatchNorm2d: 2-35                 [1, 256, 28, 28]          512
+├─MaxUnpool2d: 1-14                      [1, 256, 57, 57]          --
+├─Sequential: 1-15                       [1, 128, 61, 61]          --
+│    └─ConvTranspose2d: 2-36             [1, 128, 59, 59]          589,952
+│    └─ReLU: 2-37                        [1, 128, 59, 59]          --
+│    └─ConvTranspose2d: 2-38             [1, 128, 61, 61]          147,584
+│    └─ReLU: 2-39                        [1, 128, 61, 61]          --
+│    └─BatchNorm2d: 2-40                 [1, 128, 61, 61]          256
+├─MaxUnpool2d: 1-16                      [1, 128, 122, 122]        --
+├─Sequential: 1-17                       [1, 64, 126, 126]         --
+│    └─ConvTranspose2d: 2-41             [1, 64, 124, 124]         147,520
+│    └─ReLU: 2-42                        [1, 64, 124, 124]         --
+│    └─ConvTranspose2d: 2-43             [1, 64, 126, 126]         36,928
+│    └─ReLU: 2-44                        [1, 64, 126, 126]         --
+│    └─BatchNorm2d: 2-45                 [1, 64, 126, 126]         128
+├─MaxUnpool2d: 1-18                      [1, 64, 252, 252]         --
+├─Sequential: 1-19                       [1, 5, 256, 256]          --
+│    └─ConvTranspose2d: 2-46             [1, 5, 254, 254]          5,765
+│    └─ReLU: 2-47                        [1, 5, 254, 254]          --
+│    └─ConvTranspose2d: 2-48             [1, 5, 256, 256]          230
+│    └─ReLU: 2-49                        [1, 5, 256, 256]          --
+│    └─BatchNorm2d: 2-50                 [1, 5, 256, 256]          10
+├─Softmax: 1-20                          [1, 5, 256, 256]          --
+==========================================================================================
+Total params: 29,805,621
+Trainable params: 29,805,621
+Non-trainable params: 0
+Total mult-adds (G): 20.68
+==========================================================================================
+Input size (MB): 0.79
+Forward/backward pass size (MB): 223.40
+Params size (MB): 119.22
+Estimated Total Size (MB): 343.41
+==========================================================================================
+Epochs : 100
+Batch size : 16
+Learning rate : 0.01
+Momentum : 0.9
+Training with 5287 images
+Validation with 1321 images
+Number of training minibatches = 330 per epoch
+Number of validation minibatches = 82 per epoch
+------------------------------Epoch 1/100------------------------------
+Training Loss    : 0.141260      Training Accuracy    : 0.000000
+Validation Loss  : 0.140899     Validation Accuracy  : 0.000000
+------------------------------Epoch 2/100------------------------------
+Training Loss    : 0.140340      Training Accuracy    : 0.000001
+Validation Loss  : 0.141079     Validation Accuracy  : 0.000002
+------------------------------Epoch 3/100------------------------------
+Training Loss    : 0.140137      Training Accuracy    : 0.000002
+Validation Loss  : 0.141012     Validation Accuracy  : 0.000001
+------------------------------Epoch 4/100------------------------------
+Training Loss    : 0.139934      Training Accuracy    : 0.000002
+Validation Loss  : 0.141676     Validation Accuracy  : 0.000002
+------------------------------Epoch 5/100------------------------------
+Training Loss    : 0.139857      Training Accuracy    : 0.000002
+Validation Loss  : 0.142500     Validation Accuracy  : 0.000003
+------------------------------Epoch 6/100------------------------------
+Training Loss    : 0.139644      Training Accuracy    : 0.000002
+Validation Loss  : 0.140186     Validation Accuracy  : 0.000001
+------------------------------Epoch 7/100------------------------------
+Training Loss    : 0.139194      Training Accuracy    : 0.000002
+Validation Loss  : 0.139953     Validation Accuracy  : 0.000001
+------------------------------Epoch 8/100------------------------------
+Training Loss    : 0.139596      Training Accuracy    : 0.000001
+Validation Loss  : 0.139636     Validation Accuracy  : 0.000002
+------------------------------Epoch 9/100------------------------------
+Training Loss    : 0.138759      Training Accuracy    : 0.000002
+Validation Loss  : 0.140972     Validation Accuracy  : 0.000002
+------------------------------Epoch 10/100------------------------------
+Training Loss    : 0.138752      Training Accuracy    : 0.000001
+Validation Loss  : 0.139053     Validation Accuracy  : 0.000001
+------------------------------Epoch 11/100------------------------------
+Training Loss    : 0.138376      Training Accuracy    : 0.000002
+Validation Loss  : 0.139737     Validation Accuracy  : 0.000001
+------------------------------Epoch 12/100------------------------------
+Training Loss    : 0.138068      Training Accuracy    : 0.000002
+Validation Loss  : 0.138514     Validation Accuracy  : 0.000001
+------------------------------Epoch 13/100------------------------------
+Training Loss    : 0.137983      Training Accuracy    : 0.000002
+Validation Loss  : 0.138707     Validation Accuracy  : 0.000004
+------------------------------Epoch 14/100------------------------------
+Training Loss    : 0.138027      Training Accuracy    : 0.000002
+Validation Loss  : 0.140103     Validation Accuracy  : 0.000003
+------------------------------Epoch 15/100------------------------------
+Training Loss    : 0.137865      Training Accuracy    : 0.000002
+Validation Loss  : 0.138354     Validation Accuracy  : 0.000002
+------------------------------Epoch 16/100------------------------------
+Training Loss    : 0.137783      Training Accuracy    : 0.000002
+Validation Loss  : 0.138362     Validation Accuracy  : 0.000003
+------------------------------Epoch 17/100------------------------------
+Training Loss    : 0.137928      Training Accuracy    : 0.000002
+Validation Loss  : 0.138182     Validation Accuracy  : 0.000005
+------------------------------Epoch 18/100------------------------------
+Training Loss    : 0.137683      Training Accuracy    : 0.000002
+Validation Loss  : 0.137982     Validation Accuracy  : 0.000002
+------------------------------Epoch 19/100------------------------------
+Training Loss    : 0.137492      Training Accuracy    : 0.000002
+Validation Loss  : 0.137490     Validation Accuracy  : 0.000004
+------------------------------Epoch 20/100------------------------------
+Training Loss    : 0.137142      Training Accuracy    : 0.000002
+Validation Loss  : 0.140170     Validation Accuracy  : 0.000001
+------------------------------Epoch 21/100------------------------------
+Training Loss    : 0.137406      Training Accuracy    : 0.000002
+Validation Loss  : 0.137305     Validation Accuracy  : 0.000001
+------------------------------Epoch 22/100------------------------------
+Training Loss    : 0.137367      Training Accuracy    : 0.000002
+Validation Loss  : 0.137881     Validation Accuracy  : 0.000004
+------------------------------Epoch 23/100------------------------------
+Training Loss    : 0.137182      Training Accuracy    : 0.000002
+Validation Loss  : 0.137621     Validation Accuracy  : 0.000001
+------------------------------Epoch 24/100------------------------------
+Training Loss    : 0.137396      Training Accuracy    : 0.000002
+Validation Loss  : 0.136947     Validation Accuracy  : 0.000003
+------------------------------Epoch 25/100------------------------------
+Training Loss    : 0.136938      Training Accuracy    : 0.000001
+Validation Loss  : 0.139742     Validation Accuracy  : 0.000001
+------------------------------Epoch 26/100------------------------------
+Training Loss    : 0.136681      Training Accuracy    : 0.000002
+Validation Loss  : 0.137414     Validation Accuracy  : 0.000002
+------------------------------Epoch 27/100------------------------------
+Training Loss    : 0.136743      Training Accuracy    : 0.000002
+Validation Loss  : 0.137408     Validation Accuracy  : 0.000002
+------------------------------Epoch 28/100------------------------------
+Training Loss    : 0.136561      Training Accuracy    : 0.000002
+Validation Loss  : 0.139311     Validation Accuracy  : 0.000022
+------------------------------Epoch 29/100------------------------------
+Training Loss    : 0.136584      Training Accuracy    : 0.000002
+Validation Loss  : 0.137270     Validation Accuracy  : 0.000006
+------------------------------Epoch 30/100------------------------------
+Training Loss    : 0.136933      Training Accuracy    : 0.000001
+Validation Loss  : 0.138057     Validation Accuracy  : 0.000002
+------------------------------Epoch 31/100------------------------------
+Training Loss    : 0.137189      Training Accuracy    : 0.000001
+Validation Loss  : 0.137526     Validation Accuracy  : 0.000006
+------------------------------Epoch 32/100------------------------------
+Training Loss    : 0.136906      Training Accuracy    : 0.000002
+Validation Loss  : 0.136874     Validation Accuracy  : 0.000002
+------------------------------Epoch 33/100------------------------------
+Training Loss    : 0.136758      Training Accuracy    : 0.000002
+Validation Loss  : 0.136310     Validation Accuracy  : 0.000003
+------------------------------Epoch 34/100------------------------------
+Training Loss    : 0.136794      Training Accuracy    : 0.000002
+Validation Loss  : 0.139198     Validation Accuracy  : 0.000012
+------------------------------Epoch 35/100------------------------------
+Training Loss    : 0.137019      Training Accuracy    : 0.000002
+Validation Loss  : 0.137238     Validation Accuracy  : 0.000002
+------------------------------Epoch 36/100------------------------------
+Training Loss    : 0.136796      Training Accuracy    : 0.000002
+Validation Loss  : 0.136166     Validation Accuracy  : 0.000010
+------------------------------Epoch 37/100------------------------------
+Training Loss    : 0.136240      Training Accuracy    : 0.000002
+Validation Loss  : 0.136141     Validation Accuracy  : 0.000004
+------------------------------Epoch 38/100------------------------------
+Training Loss    : 0.135984      Training Accuracy    : 0.000003
+Validation Loss  : 0.136291     Validation Accuracy  : 0.000003
+------------------------------Epoch 39/100------------------------------
+Training Loss    : 0.135943      Training Accuracy    : 0.000002
+Validation Loss  : 0.136925     Validation Accuracy  : 0.000033
+------------------------------Epoch 40/100------------------------------
+Training Loss    : 0.136364      Training Accuracy    : 0.000002
+Validation Loss  : 0.137051     Validation Accuracy  : 0.000004
+------------------------------Epoch 41/100------------------------------
+Training Loss    : 0.136018      Training Accuracy    : 0.000002
+Validation Loss  : 0.136302     Validation Accuracy  : 0.000007
+------------------------------Epoch 42/100------------------------------
+Training Loss    : 0.136263      Training Accuracy    : 0.000002
+Validation Loss  : 0.135606     Validation Accuracy  : 0.000005
+------------------------------Epoch 43/100------------------------------
+Training Loss    : 0.135653      Training Accuracy    : 0.000002
+Validation Loss  : 0.139551     Validation Accuracy  : 0.000004
+------------------------------Epoch 44/100------------------------------
+Training Loss    : 0.135748      Training Accuracy    : 0.000001
+Validation Loss  : 0.136065     Validation Accuracy  : 0.000005
+------------------------------Epoch 45/100------------------------------
+Training Loss    : 0.135200      Training Accuracy    : 0.000000
+Validation Loss  : 0.135861     Validation Accuracy  : 0.000000
+------------------------------Epoch 46/100------------------------------
+Training Loss    : 0.136021      Training Accuracy    : 0.000000
+Validation Loss  : 0.134993     Validation Accuracy  : 0.000009
+------------------------------Epoch 47/100------------------------------
+Training Loss    : 0.136589      Training Accuracy    : 0.000000
+Validation Loss  : 0.136060     Validation Accuracy  : 0.000000
+------------------------------Epoch 48/100------------------------------
+Training Loss    : 0.137570      Training Accuracy    : 0.000000
+Validation Loss  : 0.136013     Validation Accuracy  : 0.000000
+------------------------------Epoch 49/100------------------------------
+Training Loss    : 0.135475      Training Accuracy    : 0.000000
+Validation Loss  : 0.136397     Validation Accuracy  : 0.000000
+------------------------------Epoch 50/100------------------------------
+Training Loss    : 0.135251      Training Accuracy    : 0.000000
+Validation Loss  : 0.134720     Validation Accuracy  : 0.000000
+------------------------------Epoch 51/100------------------------------
+Training Loss    : 0.136027      Training Accuracy    : 0.000000
+Validation Loss  : 0.134102     Validation Accuracy  : 0.000004
+------------------------------Epoch 52/100------------------------------
+Training Loss    : 0.135655      Training Accuracy    : 0.000000
+Validation Loss  : 0.134773     Validation Accuracy  : 0.000000
+------------------------------Epoch 53/100------------------------------
+Training Loss    : 0.135685      Training Accuracy    : 0.000000
+Validation Loss  : 0.135425     Validation Accuracy  : 0.000000
+------------------------------Epoch 54/100------------------------------
+Training Loss    : 0.136879      Training Accuracy    : 0.000000
+Validation Loss  : 0.136131     Validation Accuracy  : 0.000000
+------------------------------Epoch 55/100------------------------------
+Training Loss    : 0.136378      Training Accuracy    : 0.000000
+Validation Loss  : 0.135589     Validation Accuracy  : 0.000000
+------------------------------Epoch 56/100------------------------------
+Training Loss    : 0.135749      Training Accuracy    : 0.000000
+Validation Loss  : 0.134676     Validation Accuracy  : 0.000000
+------------------------------Epoch 57/100------------------------------
+Training Loss    : 0.135106      Training Accuracy    : 0.000000
+Validation Loss  : 0.135601     Validation Accuracy  : 0.000001
+------------------------------Epoch 58/100------------------------------
+Training Loss    : 0.136066      Training Accuracy    : 0.000000
+Validation Loss  : 0.137512     Validation Accuracy  : 0.000000
+------------------------------Epoch 59/100------------------------------
+Training Loss    : 0.137878      Training Accuracy    : 0.000000
+Validation Loss  : 0.137883     Validation Accuracy  : 0.000000
+------------------------------Epoch 60/100------------------------------
+Training Loss    : 0.137201      Training Accuracy    : 0.000000
+Validation Loss  : 0.136910     Validation Accuracy  : 0.000000
+------------------------------Epoch 61/100------------------------------
+Training Loss    : 0.136038      Training Accuracy    : 0.000000
+Validation Loss  : 0.134746     Validation Accuracy  : 0.000000
+------------------------------Epoch 62/100------------------------------
+Training Loss    : 0.135452      Training Accuracy    : 0.000000
+Validation Loss  : 0.134014     Validation Accuracy  : 0.000000
+------------------------------Epoch 63/100------------------------------
+Training Loss    : 0.135627      Training Accuracy    : 0.000000
+Validation Loss  : 0.134322     Validation Accuracy  : 0.000000
+------------------------------Epoch 64/100------------------------------
+Training Loss    : 0.135543      Training Accuracy    : 0.000000
+Validation Loss  : 0.134833     Validation Accuracy  : 0.000000
+------------------------------Epoch 65/100------------------------------
+Training Loss    : 0.135951      Training Accuracy    : 0.000000
+Validation Loss  : 0.134968     Validation Accuracy  : 0.000000
+------------------------------Epoch 66/100------------------------------
+Training Loss    : 0.135233      Training Accuracy    : 0.000000
+Validation Loss  : 0.133693     Validation Accuracy  : 0.000000
+------------------------------Epoch 67/100------------------------------
+Training Loss    : 0.134720      Training Accuracy    : 0.000000
+Validation Loss  : 0.134227     Validation Accuracy  : 0.000000
+------------------------------Epoch 68/100------------------------------
+Training Loss    : 0.135043      Training Accuracy    : 0.000000
+Validation Loss  : 0.134797     Validation Accuracy  : 0.000000
+------------------------------Epoch 69/100------------------------------
+Training Loss    : 0.134862      Training Accuracy    : 0.000000
+Validation Loss  : 0.134969     Validation Accuracy  : 0.000000
+------------------------------Epoch 70/100------------------------------
+Training Loss    : 0.134939      Training Accuracy    : 0.000000
+Validation Loss  : 0.134569     Validation Accuracy  : 0.000000
+------------------------------Epoch 71/100------------------------------
+Training Loss    : 0.134933      Training Accuracy    : 0.000000
+Validation Loss  : 0.133079     Validation Accuracy  : 0.000000
+------------------------------Epoch 72/100------------------------------
+Training Loss    : 0.134937      Training Accuracy    : 0.000000
+Validation Loss  : 0.132821     Validation Accuracy  : 0.000000
+------------------------------Epoch 73/100------------------------------
+Training Loss    : 0.134732      Training Accuracy    : 0.000000
+Validation Loss  : 0.134700     Validation Accuracy  : 0.000000
+------------------------------Epoch 74/100------------------------------
+Training Loss    : 0.134458      Training Accuracy    : 0.000000
+Validation Loss  : 0.133265     Validation Accuracy  : 0.000000
+------------------------------Epoch 75/100------------------------------
+Training Loss    : 0.134923      Training Accuracy    : 0.000000
+Validation Loss  : 0.135071     Validation Accuracy  : 0.000000
+------------------------------Epoch 76/100------------------------------
+Training Loss    : 0.135569      Training Accuracy    : 0.000000
+Validation Loss  : 0.133033     Validation Accuracy  : 0.000000
+------------------------------Epoch 77/100------------------------------
+Training Loss    : 0.134236      Training Accuracy    : 0.000000
+Validation Loss  : 0.133488     Validation Accuracy  : 0.000000
+------------------------------Epoch 78/100------------------------------
+Training Loss    : 0.135495      Training Accuracy    : 0.000000
+Validation Loss  : 0.137632     Validation Accuracy  : 0.000000
+------------------------------Epoch 79/100------------------------------
+Training Loss    : 0.133337      Training Accuracy    : 0.000000
+Validation Loss  : 0.137602     Validation Accuracy  : 0.000000
+------------------------------Epoch 80/100------------------------------
+Training Loss    : 0.135024      Training Accuracy    : 0.000000
+Validation Loss  : 0.140932     Validation Accuracy  : 0.000000
+------------------------------Epoch 81/100------------------------------
+Training Loss    : 0.134007      Training Accuracy    : 0.000000
+Validation Loss  : 0.134110     Validation Accuracy  : 0.000000
+------------------------------Epoch 82/100------------------------------
+Training Loss    : 0.133833      Training Accuracy    : 0.000000
+Validation Loss  : 0.134400     Validation Accuracy  : 0.000000
+------------------------------Epoch 83/100------------------------------
+Training Loss    : 0.134080      Training Accuracy    : 0.000000
+Validation Loss  : 0.132108     Validation Accuracy  : 0.000000
+------------------------------Epoch 84/100------------------------------
+Training Loss    : 0.134657      Training Accuracy    : 0.000000
+Validation Loss  : 0.134790     Validation Accuracy  : 0.000000
+------------------------------Epoch 85/100------------------------------
+Training Loss    : 0.134507      Training Accuracy    : 0.000000
+Validation Loss  : 0.135448     Validation Accuracy  : 0.000000
+------------------------------Epoch 86/100------------------------------
+Training Loss    : 0.134507      Training Accuracy    : 0.000000
+Validation Loss  : 0.135571     Validation Accuracy  : 0.000000
+------------------------------Epoch 87/100------------------------------
+Training Loss    : 0.134060      Training Accuracy    : 0.000000
+Validation Loss  : 0.132532     Validation Accuracy  : 0.000000
+------------------------------Epoch 88/100------------------------------
+Training Loss    : 0.133143      Training Accuracy    : 0.000000
+Validation Loss  : 0.135062     Validation Accuracy  : 0.000000
+------------------------------Epoch 89/100------------------------------
+Training Loss    : 0.133986      Training Accuracy    : 0.000000
+Validation Loss  : 0.133916     Validation Accuracy  : 0.000000
+------------------------------Epoch 90/100------------------------------
+Training Loss    : 0.133034      Training Accuracy    : 0.000000
+Validation Loss  : 0.132354     Validation Accuracy  : 0.000000
+------------------------------Epoch 91/100------------------------------
+Training Loss    : 0.132666      Training Accuracy    : 0.000000
+Validation Loss  : 0.133627     Validation Accuracy  : 0.000000
+------------------------------Epoch 92/100------------------------------
+Training Loss    : 0.133017      Training Accuracy    : 0.000000
+Validation Loss  : 0.132801     Validation Accuracy  : 0.000000
+------------------------------Epoch 93/100------------------------------
+Training Loss    : 0.132981      Training Accuracy    : 0.000000
+Validation Loss  : 0.132666     Validation Accuracy  : 0.000000
+------------------------------Epoch 94/100------------------------------
+Training Loss    : 0.133100      Training Accuracy    : 0.000000
+Validation Loss  : 0.131784     Validation Accuracy  : 0.000000
+------------------------------Epoch 95/100------------------------------
+Training Loss    : 0.133467      Training Accuracy    : 0.000000
+Validation Loss  : 0.133758     Validation Accuracy  : 0.000000
+------------------------------Epoch 96/100------------------------------
+Training Loss    : 0.133165      Training Accuracy    : 0.000000
+Validation Loss  : 0.135546     Validation Accuracy  : 0.000000
+------------------------------Epoch 97/100------------------------------
+Training Loss    : 0.133694      Training Accuracy    : 0.000000
+Validation Loss  : 0.133922     Validation Accuracy  : 0.000000
+------------------------------Epoch 98/100------------------------------
+Training Loss    : 0.132677      Training Accuracy    : 0.000000
+Validation Loss  : 0.131878     Validation Accuracy  : 0.000000
+------------------------------Epoch 99/100------------------------------
+Training Loss    : 0.132903      Training Accuracy    : 0.000000
+Validation Loss  : 0.132899     Validation Accuracy  : 0.000000
+------------------------------Epoch 100/100------------------------------
+Training Loss    : 0.133457      Training Accuracy    : 0.000000
+Validation Loss  : 0.133198     Validation Accuracy  : 0.000000
+Images from the validation set
+Images from the training set

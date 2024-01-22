@@ -1,0 +1,1753 @@
+model.py:33: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, ax = plt.subplots(1, 6, figsize=(20,20))
+Device: cuda
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+DataParallel                             [1, 5, 256, 256]          --
+├─Network: 1-1                           [1, 5, 256, 256]          29,805,621
+├─Network: 1-2                           --                        --
+│    └─Sequential: 2-1                   [1, 64, 252, 252]         38,848
+│    └─Sequential: 2-2                   --                        --
+│    │    └─Conv2d: 3-1                  [1, 64, 254, 254]         1,792
+│    │    └─ReLU: 3-2                    [1, 64, 254, 254]         --
+│    │    └─Dropout2d: 3-3               [1, 64, 254, 254]         --
+│    │    └─Conv2d: 3-4                  [1, 64, 252, 252]         36,928
+│    │    └─ReLU: 3-5                    [1, 64, 252, 252]         --
+│    │    └─BatchNorm2d: 3-6             [1, 64, 252, 252]         128
+│    └─MaxPool2d: 2-3                    [1, 64, 126, 126]         --
+│    └─Sequential: 2-4                   [1, 128, 122, 122]        221,696
+│    └─Sequential: 2-5                   --                        --
+│    │    └─Conv2d: 3-7                  [1, 128, 124, 124]        73,856
+│    │    └─ReLU: 3-8                    [1, 128, 124, 124]        --
+│    │    └─Dropout2d: 3-9               [1, 128, 124, 124]        --
+│    │    └─Conv2d: 3-10                 [1, 128, 122, 122]        147,584
+│    │    └─ReLU: 3-11                   [1, 128, 122, 122]        --
+│    │    └─BatchNorm2d: 3-12            [1, 128, 122, 122]        256
+│    └─MaxPool2d: 2-6                    [1, 128, 61, 61]          --
+│    └─Sequential: 2-7                   [1, 256, 57, 57]          885,760
+│    └─Sequential: 2-8                   --                        --
+│    │    └─Conv2d: 3-13                 [1, 256, 59, 59]          295,168
+│    │    └─ReLU: 3-14                   [1, 256, 59, 59]          --
+│    │    └─Dropout2d: 3-15              [1, 256, 59, 59]          --
+│    │    └─Conv2d: 3-16                 [1, 256, 57, 57]          590,080
+│    │    └─ReLU: 3-17                   [1, 256, 57, 57]          --
+│    │    └─BatchNorm2d: 3-18            [1, 256, 57, 57]          512
+│    └─MaxPool2d: 2-9                    [1, 256, 28, 28]          --
+│    └─Sequential: 2-10                  [1, 512, 24, 24]          3,540,992
+│    └─Sequential: 2-11                  --                        --
+│    │    └─Conv2d: 3-19                 [1, 512, 26, 26]          1,180,160
+│    │    └─ReLU: 3-20                   [1, 512, 26, 26]          --
+│    │    └─Dropout2d: 3-21              [1, 512, 26, 26]          --
+│    │    └─Conv2d: 3-22                 [1, 512, 24, 24]          2,359,808
+│    │    └─ReLU: 3-23                   [1, 512, 24, 24]          --
+│    │    └─BatchNorm2d: 3-24            [1, 512, 24, 24]          1,024
+│    └─MaxPool2d: 2-12                   [1, 512, 12, 12]          --
+│    └─Sequential: 2-13                  [1, 1024, 8, 8]           14,159,872
+│    └─Sequential: 2-14                  --                        --
+│    │    └─Conv2d: 3-25                 [1, 1024, 10, 10]         4,719,616
+│    │    └─ReLU: 3-26                   [1, 1024, 10, 10]         --
+│    │    └─Dropout2d: 3-27              [1, 1024, 10, 10]         --
+│    │    └─Conv2d: 3-28                 [1, 1024, 8, 8]           9,438,208
+│    │    └─ReLU: 3-29                   [1, 1024, 8, 8]           --
+│    │    └─BatchNorm2d: 3-30            [1, 1024, 8, 8]           2,048
+│    └─Dropout2d: 2-15                   [1, 1024, 8, 8]           --
+│    └─Sequential: 2-16                  [1, 512, 12, 12]          7,079,936
+│    └─Sequential: 2-17                  --                        --
+│    │    └─ConvTranspose2d: 3-31        [1, 512, 10, 10]          4,719,104
+│    │    └─ReLU: 3-32                   [1, 512, 10, 10]          --
+│    │    └─Dropout2d: 3-33              [1, 512, 10, 10]          --
+│    │    └─ConvTranspose2d: 3-34        [1, 512, 12, 12]          2,359,808
+│    │    └─ReLU: 3-35                   [1, 512, 12, 12]          --
+│    │    └─BatchNorm2d: 3-36            [1, 512, 12, 12]          1,024
+│    └─MaxUnpool2d: 2-18                 [1, 512, 24, 24]          --
+│    └─Sequential: 2-19                  [1, 256, 28, 28]          2,950,144
+│    └─Sequential: 2-20                  --                        --
+│    │    └─ConvTranspose2d: 3-37        [1, 256, 26, 26]          2,359,552
+│    │    └─ReLU: 3-38                   [1, 256, 26, 26]          --
+│    │    └─Dropout2d: 3-39              [1, 256, 26, 26]          --
+│    │    └─ConvTranspose2d: 3-40        [1, 256, 28, 28]          590,080
+│    │    └─ReLU: 3-41                   [1, 256, 28, 28]          --
+│    │    └─BatchNorm2d: 3-42            [1, 256, 28, 28]          512
+│    └─MaxUnpool2d: 2-21                 [1, 256, 57, 57]          --
+│    └─Sequential: 2-22                  [1, 128, 61, 61]          737,792
+│    └─Sequential: 2-23                  --                        --
+│    │    └─ConvTranspose2d: 3-43        [1, 128, 59, 59]          589,952
+│    │    └─ReLU: 3-44                   [1, 128, 59, 59]          --
+│    │    └─Dropout2d: 3-45              [1, 128, 59, 59]          --
+│    │    └─ConvTranspose2d: 3-46        [1, 128, 61, 61]          147,584
+│    │    └─ReLU: 3-47                   [1, 128, 61, 61]          --
+│    │    └─BatchNorm2d: 3-48            [1, 128, 61, 61]          256
+│    └─MaxUnpool2d: 2-24                 [1, 128, 122, 122]        --
+│    └─Sequential: 2-25                  [1, 64, 126, 126]         184,576
+│    └─Sequential: 2-26                  --                        --
+│    │    └─ConvTranspose2d: 3-49        [1, 64, 124, 124]         147,520
+│    │    └─ReLU: 3-50                   [1, 64, 124, 124]         --
+│    │    └─Dropout2d: 3-51              [1, 64, 124, 124]         --
+│    │    └─ConvTranspose2d: 3-52        [1, 64, 126, 126]         36,928
+│    │    └─ReLU: 3-53                   [1, 64, 126, 126]         --
+│    │    └─BatchNorm2d: 3-54            [1, 64, 126, 126]         128
+│    └─MaxUnpool2d: 2-27                 [1, 64, 252, 252]         --
+│    └─Sequential: 2-28                  [1, 5, 256, 256]          6,005
+│    └─Sequential: 2-29                  --                        --
+│    │    └─ConvTranspose2d: 3-55        [1, 5, 254, 254]          5,765
+│    │    └─ReLU: 3-56                   [1, 5, 254, 254]          --
+│    │    └─Dropout2d: 3-57              [1, 5, 254, 254]          --
+│    │    └─ConvTranspose2d: 3-58        [1, 5, 256, 256]          230
+│    │    └─ReLU: 3-59                   [1, 5, 256, 256]          --
+│    │    └─BatchNorm2d: 3-60            [1, 5, 256, 256]          10
+│    └─Softmax: 2-30                     [1, 5, 256, 256]          --
+==========================================================================================
+Total params: 89,416,863
+Trainable params: 89,416,863
+Non-trainable params: 0
+Total mult-adds (G): 20.68
+==========================================================================================
+Input size (MB): 0.79
+Forward/backward pass size (MB): 223.40
+Params size (MB): 119.22
+Estimated Total Size (MB): 343.41
+==========================================================================================
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+DataParallel                             [1, 5, 256, 256]          --
+├─Network: 1-1                           [1, 5, 256, 256]          29,805,621
+├─Network: 1-2                           --                        --
+│    └─Sequential: 2-1                   [1, 64, 252, 252]         38,848
+│    └─Sequential: 2-2                   --                        --
+│    │    └─Conv2d: 3-1                  [1, 64, 254, 254]         1,792
+│    │    └─ReLU: 3-2                    [1, 64, 254, 254]         --
+│    │    └─Dropout2d: 3-3               [1, 64, 254, 254]         --
+│    │    └─Conv2d: 3-4                  [1, 64, 252, 252]         36,928
+│    │    └─ReLU: 3-5                    [1, 64, 252, 252]         --
+│    │    └─BatchNorm2d: 3-6             [1, 64, 252, 252]         128
+│    └─MaxPool2d: 2-3                    [1, 64, 126, 126]         --
+│    └─Sequential: 2-4                   [1, 128, 122, 122]        221,696
+│    └─Sequential: 2-5                   --                        --
+│    │    └─Conv2d: 3-7                  [1, 128, 124, 124]        73,856
+│    │    └─ReLU: 3-8                    [1, 128, 124, 124]        --
+│    │    └─Dropout2d: 3-9               [1, 128, 124, 124]        --
+│    │    └─Conv2d: 3-10                 [1, 128, 122, 122]        147,584
+│    │    └─ReLU: 3-11                   [1, 128, 122, 122]        --
+│    │    └─BatchNorm2d: 3-12            [1, 128, 122, 122]        256
+│    └─MaxPool2d: 2-6                    [1, 128, 61, 61]          --
+│    └─Sequential: 2-7                   [1, 256, 57, 57]          885,760
+│    └─Sequential: 2-8                   --                        --
+│    │    └─Conv2d: 3-13                 [1, 256, 59, 59]          295,168
+│    │    └─ReLU: 3-14                   [1, 256, 59, 59]          --
+│    │    └─Dropout2d: 3-15              [1, 256, 59, 59]          --
+│    │    └─Conv2d: 3-16                 [1, 256, 57, 57]          590,080
+│    │    └─ReLU: 3-17                   [1, 256, 57, 57]          --
+│    │    └─BatchNorm2d: 3-18            [1, 256, 57, 57]          512
+│    └─MaxPool2d: 2-9                    [1, 256, 28, 28]          --
+│    └─Sequential: 2-10                  [1, 512, 24, 24]          3,540,992
+│    └─Sequential: 2-11                  --                        --
+│    │    └─Conv2d: 3-19                 [1, 512, 26, 26]          1,180,160
+│    │    └─ReLU: 3-20                   [1, 512, 26, 26]          --
+│    │    └─Dropout2d: 3-21              [1, 512, 26, 26]          --
+│    │    └─Conv2d: 3-22                 [1, 512, 24, 24]          2,359,808
+│    │    └─ReLU: 3-23                   [1, 512, 24, 24]          --
+│    │    └─BatchNorm2d: 3-24            [1, 512, 24, 24]          1,024
+│    └─MaxPool2d: 2-12                   [1, 512, 12, 12]          --
+│    └─Sequential: 2-13                  [1, 1024, 8, 8]           14,159,872
+│    └─Sequential: 2-14                  --                        --
+│    │    └─Conv2d: 3-25                 [1, 1024, 10, 10]         4,719,616
+│    │    └─ReLU: 3-26                   [1, 1024, 10, 10]         --
+│    │    └─Dropout2d: 3-27              [1, 1024, 10, 10]         --
+│    │    └─Conv2d: 3-28                 [1, 1024, 8, 8]           9,438,208
+│    │    └─ReLU: 3-29                   [1, 1024, 8, 8]           --
+│    │    └─BatchNorm2d: 3-30            [1, 1024, 8, 8]           2,048
+│    └─Dropout2d: 2-15                   [1, 1024, 8, 8]           --
+│    └─Sequential: 2-16                  [1, 512, 12, 12]          7,079,936
+│    └─Sequential: 2-17                  --                        --
+│    │    └─ConvTranspose2d: 3-31        [1, 512, 10, 10]          4,719,104
+│    │    └─ReLU: 3-32                   [1, 512, 10, 10]          --
+│    │    └─Dropout2d: 3-33              [1, 512, 10, 10]          --
+│    │    └─ConvTranspose2d: 3-34        [1, 512, 12, 12]          2,359,808
+│    │    └─ReLU: 3-35                   [1, 512, 12, 12]          --
+│    │    └─BatchNorm2d: 3-36            [1, 512, 12, 12]          1,024
+│    └─MaxUnpool2d: 2-18                 [1, 512, 24, 24]          --
+│    └─Sequential: 2-19                  [1, 256, 28, 28]          2,950,144
+│    └─Sequential: 2-20                  --                        --
+│    │    └─ConvTranspose2d: 3-37        [1, 256, 26, 26]          2,359,552
+│    │    └─ReLU: 3-38                   [1, 256, 26, 26]          --
+│    │    └─Dropout2d: 3-39              [1, 256, 26, 26]          --
+│    │    └─ConvTranspose2d: 3-40        [1, 256, 28, 28]          590,080
+│    │    └─ReLU: 3-41                   [1, 256, 28, 28]          --
+│    │    └─BatchNorm2d: 3-42            [1, 256, 28, 28]          512
+│    └─MaxUnpool2d: 2-21                 [1, 256, 57, 57]          --
+│    └─Sequential: 2-22                  [1, 128, 61, 61]          737,792
+│    └─Sequential: 2-23                  --                        --
+│    │    └─ConvTranspose2d: 3-43        [1, 128, 59, 59]          589,952
+│    │    └─ReLU: 3-44                   [1, 128, 59, 59]          --
+│    │    └─Dropout2d: 3-45              [1, 128, 59, 59]          --
+│    │    └─ConvTranspose2d: 3-46        [1, 128, 61, 61]          147,584
+│    │    └─ReLU: 3-47                   [1, 128, 61, 61]          --
+│    │    └─BatchNorm2d: 3-48            [1, 128, 61, 61]          256
+│    └─MaxUnpool2d: 2-24                 [1, 128, 122, 122]        --
+│    └─Sequential: 2-25                  [1, 64, 126, 126]         184,576
+│    └─Sequential: 2-26                  --                        --
+│    │    └─ConvTranspose2d: 3-49        [1, 64, 124, 124]         147,520
+│    │    └─ReLU: 3-50                   [1, 64, 124, 124]         --
+│    │    └─Dropout2d: 3-51              [1, 64, 124, 124]         --
+│    │    └─ConvTranspose2d: 3-52        [1, 64, 126, 126]         36,928
+│    │    └─ReLU: 3-53                   [1, 64, 126, 126]         --
+│    │    └─BatchNorm2d: 3-54            [1, 64, 126, 126]         128
+│    └─MaxUnpool2d: 2-27                 [1, 64, 252, 252]         --
+│    └─Sequential: 2-28                  [1, 5, 256, 256]          6,005
+│    └─Sequential: 2-29                  --                        --
+│    │    └─ConvTranspose2d: 3-55        [1, 5, 254, 254]          5,765
+│    │    └─ReLU: 3-56                   [1, 5, 254, 254]          --
+│    │    └─Dropout2d: 3-57              [1, 5, 254, 254]          --
+│    │    └─ConvTranspose2d: 3-58        [1, 5, 256, 256]          230
+│    │    └─ReLU: 3-59                   [1, 5, 256, 256]          --
+│    │    └─BatchNorm2d: 3-60            [1, 5, 256, 256]          10
+│    └─Softmax: 2-30                     [1, 5, 256, 256]          --
+==========================================================================================
+Total params: 89,416,863
+Trainable params: 89,416,863
+Non-trainable params: 0
+Total mult-adds (G): 20.68
+==========================================================================================
+Input size (MB): 0.79
+Forward/backward pass size (MB): 223.40
+Params size (MB): 119.22
+Estimated Total Size (MB): 343.41
+==========================================================================================
+Adjusting learning rate of group 0 to 1.0000e-02.
+Epochs : 500
+Batch size : 16
+Initial Learning rate : 0.01
+Momentum : 0.9
+Training with 800 images
+Validation with 200 images
+Number of training minibatches = 50 per epoch
+Number of validation minibatches = 12 per epoch
+------------------------------Epoch 1/500------------------------------
+Training Loss    : 1.539773      Training Accuracy    : 0.000005
+Validation Loss  : 1.518714     Validation Accuracy  : 0.000000
+------------------------------Epoch 2/500------------------------------
+Training Loss    : 1.429627      Training Accuracy    : 0.000008
+Validation Loss  : 1.360313     Validation Accuracy  : 0.000000
+------------------------------Epoch 3/500------------------------------
+Training Loss    : 1.361988      Training Accuracy    : 0.000000
+Validation Loss  : 1.321762     Validation Accuracy  : 0.000000
+------------------------------Epoch 4/500------------------------------
+Training Loss    : 1.312649      Training Accuracy    : 0.000000
+Validation Loss  : 1.288705     Validation Accuracy  : 0.000000
+------------------------------Epoch 5/500------------------------------
+Training Loss    : 1.275483      Training Accuracy    : 0.000002
+Validation Loss  : 1.251473     Validation Accuracy  : 0.000000
+------------------------------Epoch 6/500------------------------------
+Training Loss    : 1.250807      Training Accuracy    : 0.000001
+Validation Loss  : 1.218416     Validation Accuracy  : 0.000000
+------------------------------Epoch 7/500------------------------------
+Training Loss    : 1.233230      Training Accuracy    : 0.000000
+Validation Loss  : 1.207709     Validation Accuracy  : 0.000000
+------------------------------Epoch 8/500------------------------------
+Training Loss    : 1.223523      Training Accuracy    : 0.000005
+Validation Loss  : 1.187578     Validation Accuracy  : 0.000000
+------------------------------Epoch 9/500------------------------------
+Training Loss    : 1.209125      Training Accuracy    : 0.000005
+Validation Loss  : 1.180404     Validation Accuracy  : 0.000000
+------------------------------Epoch 10/500------------------------------
+Training Loss    : 1.206632      Training Accuracy    : 0.000004
+Validation Loss  : 1.188369     Validation Accuracy  : 0.000000
+------------------------------Epoch 11/500------------------------------
+Training Loss    : 1.197819      Training Accuracy    : 0.000005
+Validation Loss  : 1.161594     Validation Accuracy  : 0.000000
+------------------------------Epoch 12/500------------------------------
+Training Loss    : 1.190582      Training Accuracy    : 0.000002
+Validation Loss  : 1.172887     Validation Accuracy  : 0.000000
+------------------------------Epoch 13/500------------------------------
+Training Loss    : 1.179664      Training Accuracy    : 0.000013
+Validation Loss  : 1.146305     Validation Accuracy  : 0.000000
+------------------------------Epoch 14/500------------------------------
+Training Loss    : 1.178039      Training Accuracy    : 0.000008
+Validation Loss  : 1.169246     Validation Accuracy  : 0.000000
+------------------------------Epoch 15/500------------------------------
+Training Loss    : 1.163372      Training Accuracy    : 0.000009
+Validation Loss  : 1.141636     Validation Accuracy  : 0.000000
+------------------------------Epoch 16/500------------------------------
+Training Loss    : 1.168689      Training Accuracy    : 0.000009
+Validation Loss  : 1.143489     Validation Accuracy  : 0.000000
+------------------------------Epoch 17/500------------------------------
+Training Loss    : 1.159030      Training Accuracy    : 0.000009
+Validation Loss  : 1.135192     Validation Accuracy  : 0.000000
+------------------------------Epoch 18/500------------------------------
+Training Loss    : 1.160451      Training Accuracy    : 0.000040
+Validation Loss  : 1.148637     Validation Accuracy  : 0.000000
+------------------------------Epoch 19/500------------------------------
+Training Loss    : 1.150110      Training Accuracy    : 0.000039
+Validation Loss  : 1.142934     Validation Accuracy  : 0.000000
+------------------------------Epoch 20/500------------------------------
+Adjusting learning rate of group 0 to 9.0000e-03.
+Training Loss    : 1.151336      Training Accuracy    : 0.000009
+Validation Loss  : 1.123746     Validation Accuracy  : 0.000000
+------------------------------Epoch 21/500------------------------------
+Training Loss    : 1.146704      Training Accuracy    : 0.000026
+Validation Loss  : 1.135172     Validation Accuracy  : 0.000000
+------------------------------Epoch 22/500------------------------------
+Training Loss    : 1.154232      Training Accuracy    : 0.000027
+Validation Loss  : 1.153307     Validation Accuracy  : 0.000000
+------------------------------Epoch 23/500------------------------------
+Training Loss    : 1.133712      Training Accuracy    : 0.000025
+Validation Loss  : 1.121173     Validation Accuracy  : 0.000000
+------------------------------Epoch 24/500------------------------------
+Training Loss    : 1.148659      Training Accuracy    : 0.000040
+Validation Loss  : 1.152102     Validation Accuracy  : 0.000000
+------------------------------Epoch 25/500------------------------------
+Training Loss    : 1.138074      Training Accuracy    : 0.000052
+Validation Loss  : 1.121651     Validation Accuracy  : 0.000000
+------------------------------Epoch 26/500------------------------------
+Training Loss    : 1.126038      Training Accuracy    : 0.000045
+Validation Loss  : 1.118609     Validation Accuracy  : 0.000000
+------------------------------Epoch 27/500------------------------------
+Training Loss    : 1.121360      Training Accuracy    : 0.000031
+Validation Loss  : 1.122209     Validation Accuracy  : 0.000000
+------------------------------Epoch 28/500------------------------------
+Training Loss    : 1.128744      Training Accuracy    : 0.000019
+Validation Loss  : 1.124664     Validation Accuracy  : 0.000000
+------------------------------Epoch 29/500------------------------------
+Training Loss    : 1.131328      Training Accuracy    : 0.000024
+Validation Loss  : 1.118925     Validation Accuracy  : 0.000000
+------------------------------Epoch 30/500------------------------------
+Training Loss    : 1.122461      Training Accuracy    : 0.000009
+Validation Loss  : 1.131808     Validation Accuracy  : 0.000000
+------------------------------Epoch 31/500------------------------------
+Training Loss    : 1.124072      Training Accuracy    : 0.000026
+Validation Loss  : 1.113628     Validation Accuracy  : 0.000000
+------------------------------Epoch 32/500------------------------------
+Training Loss    : 1.125691      Training Accuracy    : 0.000054
+Validation Loss  : 1.110605     Validation Accuracy  : 0.000000
+------------------------------Epoch 33/500------------------------------
+Training Loss    : 1.127163      Training Accuracy    : 0.000021
+Validation Loss  : 1.107547     Validation Accuracy  : 0.000000
+------------------------------Epoch 34/500------------------------------
+Training Loss    : 1.120838      Training Accuracy    : 0.000014
+Validation Loss  : 1.108155     Validation Accuracy  : 0.000000
+------------------------------Epoch 35/500------------------------------
+Training Loss    : 1.124562      Training Accuracy    : 0.000014
+Validation Loss  : 1.111149     Validation Accuracy  : 0.000000
+------------------------------Epoch 36/500------------------------------
+Training Loss    : 1.117509      Training Accuracy    : 0.000052
+Validation Loss  : 1.105358     Validation Accuracy  : 0.000000
+------------------------------Epoch 37/500------------------------------
+Training Loss    : 1.113486      Training Accuracy    : 0.000026
+Validation Loss  : 1.113089     Validation Accuracy  : 0.000000
+------------------------------Epoch 38/500------------------------------
+Training Loss    : 1.111947      Training Accuracy    : 0.000025
+Validation Loss  : 1.099154     Validation Accuracy  : 0.000000
+------------------------------Epoch 39/500------------------------------
+Training Loss    : 1.103932      Training Accuracy    : 0.000038
+Validation Loss  : 1.098944     Validation Accuracy  : 0.000000
+------------------------------Epoch 40/500------------------------------
+Adjusting learning rate of group 0 to 8.1000e-03.
+Training Loss    : 1.115050      Training Accuracy    : 0.000030
+Validation Loss  : 1.113005     Validation Accuracy  : 0.000000
+------------------------------Epoch 41/500------------------------------
+Training Loss    : 1.106656      Training Accuracy    : 0.000061
+Validation Loss  : 1.100385     Validation Accuracy  : 0.000000
+------------------------------Epoch 42/500------------------------------
+Training Loss    : 1.110768      Training Accuracy    : 0.000066
+Validation Loss  : 1.111984     Validation Accuracy  : 0.000000
+------------------------------Epoch 43/500------------------------------
+Training Loss    : 1.106955      Training Accuracy    : 0.000023
+Validation Loss  : 1.094934     Validation Accuracy  : 0.000000
+------------------------------Epoch 44/500------------------------------
+Training Loss    : 1.103442      Training Accuracy    : 0.000030
+Validation Loss  : 1.120440     Validation Accuracy  : 0.000000
+------------------------------Epoch 45/500------------------------------
+Training Loss    : 1.107190      Training Accuracy    : 0.000057
+Validation Loss  : 1.095345     Validation Accuracy  : 0.000000
+------------------------------Epoch 46/500------------------------------
+Training Loss    : 1.110774      Training Accuracy    : 0.000059
+Validation Loss  : 1.099173     Validation Accuracy  : 0.000000
+------------------------------Epoch 47/500------------------------------
+Training Loss    : 1.103186      Training Accuracy    : 0.000033
+Validation Loss  : 1.088898     Validation Accuracy  : 0.000000
+------------------------------Epoch 48/500------------------------------
+Training Loss    : 1.095746      Training Accuracy    : 0.000026
+Validation Loss  : 1.108828     Validation Accuracy  : 0.000000
+------------------------------Epoch 49/500------------------------------
+Training Loss    : 1.101578      Training Accuracy    : 0.000090
+Validation Loss  : 1.102191     Validation Accuracy  : 0.000000
+------------------------------Epoch 50/500------------------------------
+Training Loss    : 1.098168      Training Accuracy    : 0.000075
+Validation Loss  : 1.102638     Validation Accuracy  : 0.000000
+------------------------------Epoch 51/500------------------------------
+Training Loss    : 1.096393      Training Accuracy    : 0.000055
+Validation Loss  : 1.097900     Validation Accuracy  : 0.000000
+------------------------------Epoch 52/500------------------------------
+Training Loss    : 1.104448      Training Accuracy    : 0.000037
+Validation Loss  : 1.094782     Validation Accuracy  : 0.000000
+------------------------------Epoch 53/500------------------------------
+Training Loss    : 1.101701      Training Accuracy    : 0.000071
+Validation Loss  : 1.096143     Validation Accuracy  : 0.000000
+------------------------------Epoch 54/500------------------------------
+Training Loss    : 1.100900      Training Accuracy    : 0.000054
+Validation Loss  : 1.101443     Validation Accuracy  : 0.000000
+------------------------------Epoch 55/500------------------------------
+Training Loss    : 1.093780      Training Accuracy    : 0.000053
+Validation Loss  : 1.097275     Validation Accuracy  : 0.000000
+------------------------------Epoch 56/500------------------------------
+Training Loss    : 1.103859      Training Accuracy    : 0.000053
+Validation Loss  : 1.089606     Validation Accuracy  : 0.000000
+------------------------------Epoch 57/500------------------------------
+Training Loss    : 1.100274      Training Accuracy    : 0.000052
+Validation Loss  : 1.107139     Validation Accuracy  : 0.000000
+------------------------------Epoch 58/500------------------------------
+Training Loss    : 1.092478      Training Accuracy    : 0.000111
+Validation Loss  : 1.091104     Validation Accuracy  : 0.000000
+------------------------------Epoch 59/500------------------------------
+Training Loss    : 1.098821      Training Accuracy    : 0.000065
+Validation Loss  : 1.088368     Validation Accuracy  : 0.000000
+------------------------------Epoch 60/500------------------------------
+Adjusting learning rate of group 0 to 7.2900e-03.
+Training Loss    : 1.088477      Training Accuracy    : 0.000062
+Validation Loss  : 1.117011     Validation Accuracy  : 0.000000
+------------------------------Epoch 61/500------------------------------
+Training Loss    : 1.092506      Training Accuracy    : 0.000071
+Validation Loss  : 1.090647     Validation Accuracy  : 0.000000
+------------------------------Epoch 62/500------------------------------
+Training Loss    : 1.084898      Training Accuracy    : 0.000071
+Validation Loss  : 1.097382     Validation Accuracy  : 0.000000
+------------------------------Epoch 63/500------------------------------
+Training Loss    : 1.084882      Training Accuracy    : 0.000076
+Validation Loss  : 1.091695     Validation Accuracy  : 0.000000
+------------------------------Epoch 64/500------------------------------
+Training Loss    : 1.083771      Training Accuracy    : 0.000047
+Validation Loss  : 1.089811     Validation Accuracy  : 0.000000
+------------------------------Epoch 65/500------------------------------
+Training Loss    : 1.083793      Training Accuracy    : 0.000092
+Validation Loss  : 1.092515     Validation Accuracy  : 0.000000
+------------------------------Epoch 66/500------------------------------
+Training Loss    : 1.090620      Training Accuracy    : 0.000095
+Validation Loss  : 1.086609     Validation Accuracy  : 0.000000
+------------------------------Epoch 67/500------------------------------
+Training Loss    : 1.093168      Training Accuracy    : 0.000088
+Validation Loss  : 1.088640     Validation Accuracy  : 0.000000
+------------------------------Epoch 68/500------------------------------
+Training Loss    : 1.084145      Training Accuracy    : 0.000115
+Validation Loss  : 1.082672     Validation Accuracy  : 0.000000
+------------------------------Epoch 69/500------------------------------
+Training Loss    : 1.085826      Training Accuracy    : 0.000106
+Validation Loss  : 1.087199     Validation Accuracy  : 0.000000
+------------------------------Epoch 70/500------------------------------
+Training Loss    : 1.093034      Training Accuracy    : 0.000068
+Validation Loss  : 1.084422     Validation Accuracy  : 0.000000
+------------------------------Epoch 71/500------------------------------
+Training Loss    : 1.084839      Training Accuracy    : 0.000052
+Validation Loss  : 1.087505     Validation Accuracy  : 0.000000
+------------------------------Epoch 72/500------------------------------
+Training Loss    : 1.079716      Training Accuracy    : 0.000074
+Validation Loss  : 1.092484     Validation Accuracy  : 0.000000
+------------------------------Epoch 73/500------------------------------
+Training Loss    : 1.084809      Training Accuracy    : 0.000124
+Validation Loss  : 1.091924     Validation Accuracy  : 0.000000
+------------------------------Epoch 74/500------------------------------
+Training Loss    : 1.085887      Training Accuracy    : 0.000125
+Validation Loss  : 1.081389     Validation Accuracy  : 0.000000
+------------------------------Epoch 75/500------------------------------
+Training Loss    : 1.079991      Training Accuracy    : 0.000188
+Validation Loss  : 1.089370     Validation Accuracy  : 0.000000
+------------------------------Epoch 76/500------------------------------
+Training Loss    : 1.076053      Training Accuracy    : 0.000099
+Validation Loss  : 1.081900     Validation Accuracy  : 0.000000
+------------------------------Epoch 77/500------------------------------
+Training Loss    : 1.077086      Training Accuracy    : 0.000078
+Validation Loss  : 1.085608     Validation Accuracy  : 0.000000
+------------------------------Epoch 78/500------------------------------
+Training Loss    : 1.077018      Training Accuracy    : 0.000093
+Validation Loss  : 1.097988     Validation Accuracy  : 0.000000
+------------------------------Epoch 79/500------------------------------
+Training Loss    : 1.078612      Training Accuracy    : 0.000083
+Validation Loss  : 1.092238     Validation Accuracy  : 0.000000
+------------------------------Epoch 80/500------------------------------
+Adjusting learning rate of group 0 to 6.5610e-03.
+Training Loss    : 1.084813      Training Accuracy    : 0.000073
+Validation Loss  : 1.085120     Validation Accuracy  : 0.000000
+------------------------------Epoch 81/500------------------------------
+Training Loss    : 1.077658      Training Accuracy    : 0.000100
+Validation Loss  : 1.087255     Validation Accuracy  : 0.000000
+------------------------------Epoch 82/500------------------------------
+Training Loss    : 1.072069      Training Accuracy    : 0.000105
+Validation Loss  : 1.083305     Validation Accuracy  : 0.000000
+------------------------------Epoch 83/500------------------------------
+Training Loss    : 1.083323      Training Accuracy    : 0.000092
+Validation Loss  : 1.083406     Validation Accuracy  : 0.000000
+------------------------------Epoch 84/500------------------------------
+Training Loss    : 1.071292      Training Accuracy    : 0.000121
+Validation Loss  : 1.082106     Validation Accuracy  : 0.000000
+------------------------------Epoch 85/500------------------------------
+Training Loss    : 1.074684      Training Accuracy    : 0.000049
+Validation Loss  : 1.082562     Validation Accuracy  : 0.000000
+------------------------------Epoch 86/500------------------------------
+Training Loss    : 1.067555      Training Accuracy    : 0.000124
+Validation Loss  : 1.081644     Validation Accuracy  : 0.000000
+------------------------------Epoch 87/500------------------------------
+Training Loss    : 1.072615      Training Accuracy    : 0.000108
+Validation Loss  : 1.082508     Validation Accuracy  : 0.000000
+------------------------------Epoch 88/500------------------------------
+Training Loss    : 1.074148      Training Accuracy    : 0.000061
+Validation Loss  : 1.085642     Validation Accuracy  : 0.000000
+------------------------------Epoch 89/500------------------------------
+Training Loss    : 1.066244      Training Accuracy    : 0.000133
+Validation Loss  : 1.084642     Validation Accuracy  : 0.000000
+------------------------------Epoch 90/500------------------------------
+Training Loss    : 1.074596      Training Accuracy    : 0.000055
+Validation Loss  : 1.081928     Validation Accuracy  : 0.000000
+------------------------------Epoch 91/500------------------------------
+Training Loss    : 1.063522      Training Accuracy    : 0.000150
+Validation Loss  : 1.085055     Validation Accuracy  : 0.000000
+------------------------------Epoch 92/500------------------------------
+Training Loss    : 1.066138      Training Accuracy    : 0.000173
+Validation Loss  : 1.080532     Validation Accuracy  : 0.000000
+------------------------------Epoch 93/500------------------------------
+Training Loss    : 1.074124      Training Accuracy    : 0.000046
+Validation Loss  : 1.082128     Validation Accuracy  : 0.000000
+------------------------------Epoch 94/500------------------------------
+Training Loss    : 1.078718      Training Accuracy    : 0.000152
+Validation Loss  : 1.084640     Validation Accuracy  : 0.000000
+------------------------------Epoch 95/500------------------------------
+Training Loss    : 1.065252      Training Accuracy    : 0.000177
+Validation Loss  : 1.086652     Validation Accuracy  : 0.000000
+------------------------------Epoch 96/500------------------------------
+Training Loss    : 1.075419      Training Accuracy    : 0.000072
+Validation Loss  : 1.082899     Validation Accuracy  : 0.000000
+------------------------------Epoch 97/500------------------------------
+Training Loss    : 1.068079      Training Accuracy    : 0.000071
+Validation Loss  : 1.093562     Validation Accuracy  : 0.000000
+------------------------------Epoch 98/500------------------------------
+Training Loss    : 1.061580      Training Accuracy    : 0.000132
+Validation Loss  : 1.081794     Validation Accuracy  : 0.000000
+------------------------------Epoch 99/500------------------------------
+Training Loss    : 1.071036      Training Accuracy    : 0.000111
+Validation Loss  : 1.083216     Validation Accuracy  : 0.000000
+------------------------------Epoch 100/500------------------------------
+Adjusting learning rate of group 0 to 5.9049e-03.
+Training Loss    : 1.079966      Training Accuracy    : 0.000170
+Validation Loss  : 1.083765     Validation Accuracy  : 0.000000
+------------------------------Epoch 101/500------------------------------
+Training Loss    : 1.065694      Training Accuracy    : 0.000109
+Validation Loss  : 1.085364     Validation Accuracy  : 0.000000
+------------------------------Epoch 102/500------------------------------
+Training Loss    : 1.071889      Training Accuracy    : 0.000097
+Validation Loss  : 1.079300     Validation Accuracy  : 0.000000
+------------------------------Epoch 103/500------------------------------
+Training Loss    : 1.067713      Training Accuracy    : 0.000111
+Validation Loss  : 1.087964     Validation Accuracy  : 0.000000
+------------------------------Epoch 104/500------------------------------
+Training Loss    : 1.067369      Training Accuracy    : 0.000084
+Validation Loss  : 1.078916     Validation Accuracy  : 0.000000
+------------------------------Epoch 105/500------------------------------
+Training Loss    : 1.060647      Training Accuracy    : 0.000106
+Validation Loss  : 1.081373     Validation Accuracy  : 0.000000
+------------------------------Epoch 106/500------------------------------
+Training Loss    : 1.078825      Training Accuracy    : 0.000168
+Validation Loss  : 1.087721     Validation Accuracy  : 0.000000
+------------------------------Epoch 107/500------------------------------
+Training Loss    : 1.061863      Training Accuracy    : 0.000103
+Validation Loss  : 1.084132     Validation Accuracy  : 0.000000
+------------------------------Epoch 108/500------------------------------
+Training Loss    : 1.062280      Training Accuracy    : 0.000084
+Validation Loss  : 1.079386     Validation Accuracy  : 0.000000
+------------------------------Epoch 109/500------------------------------
+Training Loss    : 1.069348      Training Accuracy    : 0.000144
+Validation Loss  : 1.079544     Validation Accuracy  : 0.000000
+------------------------------Epoch 110/500------------------------------
+Training Loss    : 1.065573      Training Accuracy    : 0.000097
+Validation Loss  : 1.079835     Validation Accuracy  : 0.000000
+------------------------------Epoch 111/500------------------------------
+Training Loss    : 1.062078      Training Accuracy    : 0.000178
+Validation Loss  : 1.083447     Validation Accuracy  : 0.000000
+------------------------------Epoch 112/500------------------------------
+Training Loss    : 1.059808      Training Accuracy    : 0.000212
+Validation Loss  : 1.083335     Validation Accuracy  : 0.000000
+------------------------------Epoch 113/500------------------------------
+Training Loss    : 1.066500      Training Accuracy    : 0.000293
+Validation Loss  : 1.081231     Validation Accuracy  : 0.000000
+------------------------------Epoch 114/500------------------------------
+Training Loss    : 1.060687      Training Accuracy    : 0.000145
+Validation Loss  : 1.081998     Validation Accuracy  : 0.000000
+------------------------------Epoch 115/500------------------------------
+Training Loss    : 1.058360      Training Accuracy    : 0.000180
+Validation Loss  : 1.078977     Validation Accuracy  : 0.000000
+------------------------------Epoch 116/500------------------------------
+Training Loss    : 1.068066      Training Accuracy    : 0.000167
+Validation Loss  : 1.081596     Validation Accuracy  : 0.000000
+------------------------------Epoch 117/500------------------------------
+Training Loss    : 1.070634      Training Accuracy    : 0.000123
+Validation Loss  : 1.082339     Validation Accuracy  : 0.000000
+------------------------------Epoch 118/500------------------------------
+Training Loss    : 1.059004      Training Accuracy    : 0.000245
+Validation Loss  : 1.081022     Validation Accuracy  : 0.000000
+------------------------------Epoch 119/500------------------------------
+Training Loss    : 1.064786      Training Accuracy    : 0.000141
+Validation Loss  : 1.080272     Validation Accuracy  : 0.000000
+------------------------------Epoch 120/500------------------------------
+Adjusting learning rate of group 0 to 5.3144e-03.
+Training Loss    : 1.059285      Training Accuracy    : 0.000082
+Validation Loss  : 1.081124     Validation Accuracy  : 0.000000
+------------------------------Epoch 121/500------------------------------
+Training Loss    : 1.061622      Training Accuracy    : 0.000194
+Validation Loss  : 1.085805     Validation Accuracy  : 0.000000
+------------------------------Epoch 122/500------------------------------
+Training Loss    : 1.057219      Training Accuracy    : 0.000158
+Validation Loss  : 1.079296     Validation Accuracy  : 0.000000
+------------------------------Epoch 123/500------------------------------
+Training Loss    : 1.053980      Training Accuracy    : 0.000159
+Validation Loss  : 1.083900     Validation Accuracy  : 0.000000
+------------------------------Epoch 124/500------------------------------
+Training Loss    : 1.053538      Training Accuracy    : 0.000172
+Validation Loss  : 1.079978     Validation Accuracy  : 0.000000
+------------------------------Epoch 125/500------------------------------
+Training Loss    : 1.055536      Training Accuracy    : 0.000199
+Validation Loss  : 1.080109     Validation Accuracy  : 0.000000
+------------------------------Epoch 126/500------------------------------
+Training Loss    : 1.055923      Training Accuracy    : 0.000167
+Validation Loss  : 1.077907     Validation Accuracy  : 0.000000
+------------------------------Epoch 127/500------------------------------
+Training Loss    : 1.055436      Training Accuracy    : 0.000139
+Validation Loss  : 1.078014     Validation Accuracy  : 0.000000
+------------------------------Epoch 128/500------------------------------
+Training Loss    : 1.051748      Training Accuracy    : 0.000164
+Validation Loss  : 1.087330     Validation Accuracy  : 0.000000
+------------------------------Epoch 129/500------------------------------
+Training Loss    : 1.052308      Training Accuracy    : 0.000113
+Validation Loss  : 1.081736     Validation Accuracy  : 0.000000
+------------------------------Epoch 130/500------------------------------
+Training Loss    : 1.051126      Training Accuracy    : 0.000169
+Validation Loss  : 1.084188     Validation Accuracy  : 0.000000
+------------------------------Epoch 131/500------------------------------
+Training Loss    : 1.051222      Training Accuracy    : 0.000191
+Validation Loss  : 1.079875     Validation Accuracy  : 0.000000
+------------------------------Epoch 132/500------------------------------
+Training Loss    : 1.049412      Training Accuracy    : 0.000139
+Validation Loss  : 1.077233     Validation Accuracy  : 0.000000
+------------------------------Epoch 133/500------------------------------
+Training Loss    : 1.051368      Training Accuracy    : 0.000174
+Validation Loss  : 1.078927     Validation Accuracy  : 0.000000
+------------------------------Epoch 134/500------------------------------
+Training Loss    : 1.058941      Training Accuracy    : 0.000184
+Validation Loss  : 1.082832     Validation Accuracy  : 0.000000
+------------------------------Epoch 135/500------------------------------
+Training Loss    : 1.057498      Training Accuracy    : 0.000292
+Validation Loss  : 1.080732     Validation Accuracy  : 0.000000
+------------------------------Epoch 136/500------------------------------
+Training Loss    : 1.053080      Training Accuracy    : 0.000151
+Validation Loss  : 1.079566     Validation Accuracy  : 0.000000
+------------------------------Epoch 137/500------------------------------
+Training Loss    : 1.046368      Training Accuracy    : 0.000212
+Validation Loss  : 1.078046     Validation Accuracy  : 0.000000
+------------------------------Epoch 138/500------------------------------
+Training Loss    : 1.048914      Training Accuracy    : 0.000267
+Validation Loss  : 1.084133     Validation Accuracy  : 0.000000
+------------------------------Epoch 139/500------------------------------
+Training Loss    : 1.050612      Training Accuracy    : 0.000170
+Validation Loss  : 1.080232     Validation Accuracy  : 0.000000
+------------------------------Epoch 140/500------------------------------
+Adjusting learning rate of group 0 to 4.7830e-03.
+Training Loss    : 1.053835      Training Accuracy    : 0.000274
+Validation Loss  : 1.085199     Validation Accuracy  : 0.000000
+------------------------------Epoch 141/500------------------------------
+Training Loss    : 1.057980      Training Accuracy    : 0.000201
+Validation Loss  : 1.082884     Validation Accuracy  : 0.000000
+------------------------------Epoch 142/500------------------------------
+Training Loss    : 1.050542      Training Accuracy    : 0.000261
+Validation Loss  : 1.079180     Validation Accuracy  : 0.000000
+------------------------------Epoch 143/500------------------------------
+Training Loss    : 1.050209      Training Accuracy    : 0.000190
+Validation Loss  : 1.083705     Validation Accuracy  : 0.000000
+------------------------------Epoch 144/500------------------------------
+Training Loss    : 1.043886      Training Accuracy    : 0.000294
+Validation Loss  : 1.076265     Validation Accuracy  : 0.000000
+------------------------------Epoch 145/500------------------------------
+Training Loss    : 1.051666      Training Accuracy    : 0.000226
+Validation Loss  : 1.084220     Validation Accuracy  : 0.000000
+------------------------------Epoch 146/500------------------------------
+Training Loss    : 1.048232      Training Accuracy    : 0.000172
+Validation Loss  : 1.080568     Validation Accuracy  : 0.000000
+------------------------------Epoch 147/500------------------------------
+Training Loss    : 1.044725      Training Accuracy    : 0.000202
+Validation Loss  : 1.087794     Validation Accuracy  : 0.000000
+------------------------------Epoch 148/500------------------------------
+Training Loss    : 1.043397      Training Accuracy    : 0.000179
+Validation Loss  : 1.092468     Validation Accuracy  : 0.000000
+------------------------------Epoch 149/500------------------------------
+Training Loss    : 1.043829      Training Accuracy    : 0.000159
+Validation Loss  : 1.079860     Validation Accuracy  : 0.000000
+------------------------------Epoch 150/500------------------------------
+Training Loss    : 1.049096      Training Accuracy    : 0.000183
+Validation Loss  : 1.078111     Validation Accuracy  : 0.000000
+------------------------------Epoch 151/500------------------------------
+Training Loss    : 1.040307      Training Accuracy    : 0.000240
+Validation Loss  : 1.079992     Validation Accuracy  : 0.000000
+------------------------------Epoch 152/500------------------------------
+Training Loss    : 1.048912      Training Accuracy    : 0.000151
+Validation Loss  : 1.079447     Validation Accuracy  : 0.000000
+------------------------------Epoch 153/500------------------------------
+Training Loss    : 1.049924      Training Accuracy    : 0.000257
+Validation Loss  : 1.078578     Validation Accuracy  : 0.000000
+------------------------------Epoch 154/500------------------------------
+Training Loss    : 1.044345      Training Accuracy    : 0.000100
+Validation Loss  : 1.084732     Validation Accuracy  : 0.000000
+------------------------------Epoch 155/500------------------------------
+Training Loss    : 1.047406      Training Accuracy    : 0.000274
+Validation Loss  : 1.077751     Validation Accuracy  : 0.000000
+------------------------------Epoch 156/500------------------------------
+Training Loss    : 1.044737      Training Accuracy    : 0.000197
+Validation Loss  : 1.086049     Validation Accuracy  : 0.000000
+------------------------------Epoch 157/500------------------------------
+Training Loss    : 1.041729      Training Accuracy    : 0.000182
+Validation Loss  : 1.076989     Validation Accuracy  : 0.000000
+------------------------------Epoch 158/500------------------------------
+Training Loss    : 1.043767      Training Accuracy    : 0.000247
+Validation Loss  : 1.083656     Validation Accuracy  : 0.000000
+------------------------------Epoch 159/500------------------------------
+Training Loss    : 1.035770      Training Accuracy    : 0.000242
+Validation Loss  : 1.081554     Validation Accuracy  : 0.000000
+------------------------------Epoch 160/500------------------------------
+Adjusting learning rate of group 0 to 4.3047e-03.
+Training Loss    : 1.039289      Training Accuracy    : 0.000187
+Validation Loss  : 1.080067     Validation Accuracy  : 0.000000
+------------------------------Epoch 161/500------------------------------
+Training Loss    : 1.046439      Training Accuracy    : 0.000210
+Validation Loss  : 1.084458     Validation Accuracy  : 0.000000
+------------------------------Epoch 162/500------------------------------
+Training Loss    : 1.038844      Training Accuracy    : 0.000274
+Validation Loss  : 1.078392     Validation Accuracy  : 0.000000
+------------------------------Epoch 163/500------------------------------
+Training Loss    : 1.037329      Training Accuracy    : 0.000160
+Validation Loss  : 1.077515     Validation Accuracy  : 0.000000
+------------------------------Epoch 164/500------------------------------
+Training Loss    : 1.042383      Training Accuracy    : 0.000164
+Validation Loss  : 1.075229     Validation Accuracy  : 0.000000
+------------------------------Epoch 165/500------------------------------
+Training Loss    : 1.037778      Training Accuracy    : 0.000176
+Validation Loss  : 1.083720     Validation Accuracy  : 0.000000
+------------------------------Epoch 166/500------------------------------
+Training Loss    : 1.041163      Training Accuracy    : 0.000256
+Validation Loss  : 1.085536     Validation Accuracy  : 0.000000
+------------------------------Epoch 167/500------------------------------
+Training Loss    : 1.035858      Training Accuracy    : 0.000173
+Validation Loss  : 1.081870     Validation Accuracy  : 0.000000
+------------------------------Epoch 168/500------------------------------
+Training Loss    : 1.039766      Training Accuracy    : 0.000284
+Validation Loss  : 1.082949     Validation Accuracy  : 0.000000
+------------------------------Epoch 169/500------------------------------
+Training Loss    : 1.033374      Training Accuracy    : 0.000161
+Validation Loss  : 1.088466     Validation Accuracy  : 0.000000
+------------------------------Epoch 170/500------------------------------
+Training Loss    : 1.034718      Training Accuracy    : 0.000194
+Validation Loss  : 1.081389     Validation Accuracy  : 0.000000
+------------------------------Epoch 171/500------------------------------
+Training Loss    : 1.039992      Training Accuracy    : 0.000205
+Validation Loss  : 1.078230     Validation Accuracy  : 0.000000
+------------------------------Epoch 172/500------------------------------
+Training Loss    : 1.037564      Training Accuracy    : 0.000219
+Validation Loss  : 1.081297     Validation Accuracy  : 0.000000
+------------------------------Epoch 173/500------------------------------
+Training Loss    : 1.033463      Training Accuracy    : 0.000283
+Validation Loss  : 1.079709     Validation Accuracy  : 0.000000
+------------------------------Epoch 174/500------------------------------
+Training Loss    : 1.035090      Training Accuracy    : 0.000193
+Validation Loss  : 1.077526     Validation Accuracy  : 0.000000
+------------------------------Epoch 175/500------------------------------
+Training Loss    : 1.031033      Training Accuracy    : 0.000220
+Validation Loss  : 1.082826     Validation Accuracy  : 0.000000
+------------------------------Epoch 176/500------------------------------
+Training Loss    : 1.038848      Training Accuracy    : 0.000216
+Validation Loss  : 1.085527     Validation Accuracy  : 0.000000
+------------------------------Epoch 177/500------------------------------
+Training Loss    : 1.039609      Training Accuracy    : 0.000244
+Validation Loss  : 1.081931     Validation Accuracy  : 0.000000
+------------------------------Epoch 178/500------------------------------
+Training Loss    : 1.030047      Training Accuracy    : 0.000258
+Validation Loss  : 1.076966     Validation Accuracy  : 0.000000
+------------------------------Epoch 179/500------------------------------
+Training Loss    : 1.034789      Training Accuracy    : 0.000243
+Validation Loss  : 1.081531     Validation Accuracy  : 0.000002
+------------------------------Epoch 180/500------------------------------
+Adjusting learning rate of group 0 to 3.8742e-03.
+Training Loss    : 1.029886      Training Accuracy    : 0.000225
+Validation Loss  : 1.077780     Validation Accuracy  : 0.000000
+------------------------------Epoch 181/500------------------------------
+Training Loss    : 1.027366      Training Accuracy    : 0.000209
+Validation Loss  : 1.078407     Validation Accuracy  : 0.000001
+------------------------------Epoch 182/500------------------------------
+Training Loss    : 1.031266      Training Accuracy    : 0.000203
+Validation Loss  : 1.084161     Validation Accuracy  : 0.000000
+------------------------------Epoch 183/500------------------------------
+Training Loss    : 1.028759      Training Accuracy    : 0.000312
+Validation Loss  : 1.080326     Validation Accuracy  : 0.000003
+------------------------------Epoch 184/500------------------------------
+Training Loss    : 1.031952      Training Accuracy    : 0.000328
+Validation Loss  : 1.084057     Validation Accuracy  : 0.000001
+------------------------------Epoch 185/500------------------------------
+Training Loss    : 1.032632      Training Accuracy    : 0.000264
+Validation Loss  : 1.080774     Validation Accuracy  : 0.000001
+------------------------------Epoch 186/500------------------------------
+Training Loss    : 1.037904      Training Accuracy    : 0.000335
+Validation Loss  : 1.085150     Validation Accuracy  : 0.000000
+------------------------------Epoch 187/500------------------------------
+Training Loss    : 1.040426      Training Accuracy    : 0.000276
+Validation Loss  : 1.086593     Validation Accuracy  : 0.000001
+------------------------------Epoch 188/500------------------------------
+Training Loss    : 1.031359      Training Accuracy    : 0.000169
+Validation Loss  : 1.077539     Validation Accuracy  : 0.000001
+------------------------------Epoch 189/500------------------------------
+Training Loss    : 1.029039      Training Accuracy    : 0.000220
+Validation Loss  : 1.084433     Validation Accuracy  : 0.000000
+------------------------------Epoch 190/500------------------------------
+Training Loss    : 1.029784      Training Accuracy    : 0.000221
+Validation Loss  : 1.083383     Validation Accuracy  : 0.000002
+------------------------------Epoch 191/500------------------------------
+Training Loss    : 1.024930      Training Accuracy    : 0.000293
+Validation Loss  : 1.079943     Validation Accuracy  : 0.000000
+------------------------------Epoch 192/500------------------------------
+Training Loss    : 1.032956      Training Accuracy    : 0.000230
+Validation Loss  : 1.079858     Validation Accuracy  : 0.000000
+------------------------------Epoch 193/500------------------------------
+Training Loss    : 1.033435      Training Accuracy    : 0.000218
+Validation Loss  : 1.089616     Validation Accuracy  : 0.000000
+------------------------------Epoch 194/500------------------------------
+Training Loss    : 1.035774      Training Accuracy    : 0.000393
+Validation Loss  : 1.077293     Validation Accuracy  : 0.000000
+------------------------------Epoch 195/500------------------------------
+Training Loss    : 1.026101      Training Accuracy    : 0.000279
+Validation Loss  : 1.080527     Validation Accuracy  : 0.000000
+------------------------------Epoch 196/500------------------------------
+Training Loss    : 1.030149      Training Accuracy    : 0.000377
+Validation Loss  : 1.081599     Validation Accuracy  : 0.000000
+------------------------------Epoch 197/500------------------------------
+Training Loss    : 1.020185      Training Accuracy    : 0.000250
+Validation Loss  : 1.080135     Validation Accuracy  : 0.000000
+------------------------------Epoch 198/500------------------------------
+Training Loss    : 1.026010      Training Accuracy    : 0.000287
+Validation Loss  : 1.078818     Validation Accuracy  : 0.000001
+------------------------------Epoch 199/500------------------------------
+Training Loss    : 1.030777      Training Accuracy    : 0.000340
+Validation Loss  : 1.076779     Validation Accuracy  : 0.000005
+------------------------------Epoch 200/500------------------------------
+Adjusting learning rate of group 0 to 3.4868e-03.
+Training Loss    : 1.031922      Training Accuracy    : 0.000329
+Validation Loss  : 1.083927     Validation Accuracy  : 0.000001
+------------------------------Epoch 201/500------------------------------
+Training Loss    : 1.023922      Training Accuracy    : 0.000183
+Validation Loss  : 1.085616     Validation Accuracy  : 0.000001
+------------------------------Epoch 202/500------------------------------
+Training Loss    : 1.026156      Training Accuracy    : 0.000287
+Validation Loss  : 1.080344     Validation Accuracy  : 0.000001
+------------------------------Epoch 203/500------------------------------
+Training Loss    : 1.029217      Training Accuracy    : 0.000332
+Validation Loss  : 1.080812     Validation Accuracy  : 0.000001
+------------------------------Epoch 204/500------------------------------
+Training Loss    : 1.025173      Training Accuracy    : 0.000262
+Validation Loss  : 1.078224     Validation Accuracy  : 0.000001
+------------------------------Epoch 205/500------------------------------
+Training Loss    : 1.021308      Training Accuracy    : 0.000336
+Validation Loss  : 1.083275     Validation Accuracy  : 0.000001
+------------------------------Epoch 206/500------------------------------
+Training Loss    : 1.021853      Training Accuracy    : 0.000237
+Validation Loss  : 1.079223     Validation Accuracy  : 0.000001
+------------------------------Epoch 207/500------------------------------
+Training Loss    : 1.022894      Training Accuracy    : 0.000299
+Validation Loss  : 1.083917     Validation Accuracy  : 0.000001
+------------------------------Epoch 208/500------------------------------
+Training Loss    : 1.029065      Training Accuracy    : 0.000263
+Validation Loss  : 1.082073     Validation Accuracy  : 0.000001
+------------------------------Epoch 209/500------------------------------
+Training Loss    : 1.020768      Training Accuracy    : 0.000179
+Validation Loss  : 1.079963     Validation Accuracy  : 0.000000
+------------------------------Epoch 210/500------------------------------
+Training Loss    : 1.023840      Training Accuracy    : 0.000235
+Validation Loss  : 1.077566     Validation Accuracy  : 0.000002
+------------------------------Epoch 211/500------------------------------
+Training Loss    : 1.024530      Training Accuracy    : 0.000378
+Validation Loss  : 1.080553     Validation Accuracy  : 0.000002
+------------------------------Epoch 212/500------------------------------
+Training Loss    : 1.024159      Training Accuracy    : 0.000284
+Validation Loss  : 1.083184     Validation Accuracy  : 0.000003
+------------------------------Epoch 213/500------------------------------
+Training Loss    : 1.022362      Training Accuracy    : 0.000216
+Validation Loss  : 1.084147     Validation Accuracy  : 0.000001
+------------------------------Epoch 214/500------------------------------
+Training Loss    : 1.021889      Training Accuracy    : 0.000209
+Validation Loss  : 1.080385     Validation Accuracy  : 0.000001
+------------------------------Epoch 215/500------------------------------
+Training Loss    : 1.015860      Training Accuracy    : 0.000307
+Validation Loss  : 1.079717     Validation Accuracy  : 0.000001
+------------------------------Epoch 216/500------------------------------
+Training Loss    : 1.018935      Training Accuracy    : 0.000360
+Validation Loss  : 1.082705     Validation Accuracy  : 0.000002
+------------------------------Epoch 217/500------------------------------
+Training Loss    : 1.021231      Training Accuracy    : 0.000438
+Validation Loss  : 1.088627     Validation Accuracy  : 0.000001
+------------------------------Epoch 218/500------------------------------
+Training Loss    : 1.020615      Training Accuracy    : 0.000312
+Validation Loss  : 1.078279     Validation Accuracy  : 0.000001
+------------------------------Epoch 219/500------------------------------
+Training Loss    : 1.018433      Training Accuracy    : 0.000250
+Validation Loss  : 1.083161     Validation Accuracy  : 0.000001
+------------------------------Epoch 220/500------------------------------
+Adjusting learning rate of group 0 to 3.1381e-03.
+Training Loss    : 1.016875      Training Accuracy    : 0.000245
+Validation Loss  : 1.084125     Validation Accuracy  : 0.000000
+------------------------------Epoch 221/500------------------------------
+Training Loss    : 1.017952      Training Accuracy    : 0.000292
+Validation Loss  : 1.079569     Validation Accuracy  : 0.000001
+------------------------------Epoch 222/500------------------------------
+Training Loss    : 1.018068      Training Accuracy    : 0.000249
+Validation Loss  : 1.079083     Validation Accuracy  : 0.000000
+------------------------------Epoch 223/500------------------------------
+Training Loss    : 1.015090      Training Accuracy    : 0.000265
+Validation Loss  : 1.081932     Validation Accuracy  : 0.000004
+------------------------------Epoch 224/500------------------------------
+Training Loss    : 1.018878      Training Accuracy    : 0.000313
+Validation Loss  : 1.080167     Validation Accuracy  : 0.000000
+------------------------------Epoch 225/500------------------------------
+Training Loss    : 1.021207      Training Accuracy    : 0.000396
+Validation Loss  : 1.077752     Validation Accuracy  : 0.000002
+------------------------------Epoch 226/500------------------------------
+Training Loss    : 1.017209      Training Accuracy    : 0.000402
+Validation Loss  : 1.082130     Validation Accuracy  : 0.000000
+------------------------------Epoch 227/500------------------------------
+Training Loss    : 1.022090      Training Accuracy    : 0.000286
+Validation Loss  : 1.079597     Validation Accuracy  : 0.000000
+------------------------------Epoch 228/500------------------------------
+Training Loss    : 1.023570      Training Accuracy    : 0.000404
+Validation Loss  : 1.084855     Validation Accuracy  : 0.000003
+------------------------------Epoch 229/500------------------------------
+Training Loss    : 1.015100      Training Accuracy    : 0.000367
+Validation Loss  : 1.082520     Validation Accuracy  : 0.000002
+------------------------------Epoch 230/500------------------------------
+Training Loss    : 1.013643      Training Accuracy    : 0.000367
+Validation Loss  : 1.081909     Validation Accuracy  : 0.000001
+------------------------------Epoch 231/500------------------------------
+Training Loss    : 1.014368      Training Accuracy    : 0.000385
+Validation Loss  : 1.081762     Validation Accuracy  : 0.000000
+------------------------------Epoch 232/500------------------------------
+Training Loss    : 1.016793      Training Accuracy    : 0.000400
+Validation Loss  : 1.081701     Validation Accuracy  : 0.000001
+------------------------------Epoch 233/500------------------------------
+Training Loss    : 1.020757      Training Accuracy    : 0.000424
+Validation Loss  : 1.079250     Validation Accuracy  : 0.000004
+------------------------------Epoch 234/500------------------------------
+Training Loss    : 1.015073      Training Accuracy    : 0.000378
+Validation Loss  : 1.081147     Validation Accuracy  : 0.000001
+------------------------------Epoch 235/500------------------------------
+Training Loss    : 1.018409      Training Accuracy    : 0.000223
+Validation Loss  : 1.082112     Validation Accuracy  : 0.000001
+------------------------------Epoch 236/500------------------------------
+Training Loss    : 1.013551      Training Accuracy    : 0.000428
+Validation Loss  : 1.079413     Validation Accuracy  : 0.000002
+------------------------------Epoch 237/500------------------------------
+Training Loss    : 1.016182      Training Accuracy    : 0.000211
+Validation Loss  : 1.083972     Validation Accuracy  : 0.000002
+------------------------------Epoch 238/500------------------------------
+Training Loss    : 1.015937      Training Accuracy    : 0.000278
+Validation Loss  : 1.080740     Validation Accuracy  : 0.000001
+------------------------------Epoch 239/500------------------------------
+Training Loss    : 1.016785      Training Accuracy    : 0.000259
+Validation Loss  : 1.080576     Validation Accuracy  : 0.000001
+------------------------------Epoch 240/500------------------------------
+Adjusting learning rate of group 0 to 2.8243e-03.
+Training Loss    : 1.011012      Training Accuracy    : 0.000218
+Validation Loss  : 1.080131     Validation Accuracy  : 0.000002
+------------------------------Epoch 241/500------------------------------
+Training Loss    : 1.015284      Training Accuracy    : 0.000282
+Validation Loss  : 1.079417     Validation Accuracy  : 0.000000
+------------------------------Epoch 242/500------------------------------
+Training Loss    : 1.021591      Training Accuracy    : 0.000333
+Validation Loss  : 1.079435     Validation Accuracy  : 0.000001
+------------------------------Epoch 243/500------------------------------
+Training Loss    : 1.018314      Training Accuracy    : 0.000333
+Validation Loss  : 1.080092     Validation Accuracy  : 0.000001
+------------------------------Epoch 244/500------------------------------
+Training Loss    : 1.014424      Training Accuracy    : 0.000254
+Validation Loss  : 1.083621     Validation Accuracy  : 0.000000
+------------------------------Epoch 245/500------------------------------
+Training Loss    : 1.012172      Training Accuracy    : 0.000343
+Validation Loss  : 1.084505     Validation Accuracy  : 0.000003
+------------------------------Epoch 246/500------------------------------
+Training Loss    : 1.010994      Training Accuracy    : 0.000286
+Validation Loss  : 1.079218     Validation Accuracy  : 0.000000
+------------------------------Epoch 247/500------------------------------
+Training Loss    : 1.012363      Training Accuracy    : 0.000269
+Validation Loss  : 1.081245     Validation Accuracy  : 0.000002
+------------------------------Epoch 248/500------------------------------
+Training Loss    : 1.017290      Training Accuracy    : 0.000281
+Validation Loss  : 1.079952     Validation Accuracy  : 0.000000
+------------------------------Epoch 249/500------------------------------
+Training Loss    : 1.019023      Training Accuracy    : 0.000411
+Validation Loss  : 1.085474     Validation Accuracy  : 0.000000
+------------------------------Epoch 250/500------------------------------
+Training Loss    : 1.019927      Training Accuracy    : 0.000454
+Validation Loss  : 1.084946     Validation Accuracy  : 0.000001
+------------------------------Epoch 251/500------------------------------
+Training Loss    : 1.022598      Training Accuracy    : 0.000370
+Validation Loss  : 1.084300     Validation Accuracy  : 0.000002
+------------------------------Epoch 252/500------------------------------
+Training Loss    : 1.017913      Training Accuracy    : 0.000555
+Validation Loss  : 1.079599     Validation Accuracy  : 0.000004
+------------------------------Epoch 253/500------------------------------
+Training Loss    : 1.011423      Training Accuracy    : 0.000430
+Validation Loss  : 1.081393     Validation Accuracy  : 0.000005
+------------------------------Epoch 254/500------------------------------
+Training Loss    : 1.017063      Training Accuracy    : 0.000298
+Validation Loss  : 1.078680     Validation Accuracy  : 0.000001
+------------------------------Epoch 255/500------------------------------
+Training Loss    : 1.015260      Training Accuracy    : 0.000336
+Validation Loss  : 1.081832     Validation Accuracy  : 0.000001
+------------------------------Epoch 256/500------------------------------
+Training Loss    : 1.010434      Training Accuracy    : 0.000380
+Validation Loss  : 1.079201     Validation Accuracy  : 0.000001
+------------------------------Epoch 257/500------------------------------
+Training Loss    : 1.011703      Training Accuracy    : 0.000360
+Validation Loss  : 1.080818     Validation Accuracy  : 0.000002
+------------------------------Epoch 258/500------------------------------
+Training Loss    : 1.015321      Training Accuracy    : 0.000325
+Validation Loss  : 1.080520     Validation Accuracy  : 0.000001
+------------------------------Epoch 259/500------------------------------
+Training Loss    : 1.013750      Training Accuracy    : 0.000534
+Validation Loss  : 1.078304     Validation Accuracy  : 0.000003
+------------------------------Epoch 260/500------------------------------
+Adjusting learning rate of group 0 to 2.5419e-03.
+Training Loss    : 1.020756      Training Accuracy    : 0.000434
+Validation Loss  : 1.079556     Validation Accuracy  : 0.000005
+------------------------------Epoch 261/500------------------------------
+Training Loss    : 1.015282      Training Accuracy    : 0.000438
+Validation Loss  : 1.083835     Validation Accuracy  : 0.000001
+------------------------------Epoch 262/500------------------------------
+Training Loss    : 1.012832      Training Accuracy    : 0.000475
+Validation Loss  : 1.078816     Validation Accuracy  : 0.000001
+------------------------------Epoch 263/500------------------------------
+Training Loss    : 1.009292      Training Accuracy    : 0.000410
+Validation Loss  : 1.081907     Validation Accuracy  : 0.000001
+------------------------------Epoch 264/500------------------------------
+Training Loss    : 1.015533      Training Accuracy    : 0.000433
+Validation Loss  : 1.083968     Validation Accuracy  : 0.000001
+------------------------------Epoch 265/500------------------------------
+Training Loss    : 1.008616      Training Accuracy    : 0.000313
+Validation Loss  : 1.078147     Validation Accuracy  : 0.000000
+------------------------------Epoch 266/500------------------------------
+Training Loss    : 1.010246      Training Accuracy    : 0.000325
+Validation Loss  : 1.079555     Validation Accuracy  : 0.000001
+------------------------------Epoch 267/500------------------------------
+Training Loss    : 1.007486      Training Accuracy    : 0.000423
+Validation Loss  : 1.083020     Validation Accuracy  : 0.000000
+------------------------------Epoch 268/500------------------------------
+Training Loss    : 1.013134      Training Accuracy    : 0.000421
+Validation Loss  : 1.076289     Validation Accuracy  : 0.000001
+------------------------------Epoch 269/500------------------------------
+Training Loss    : 1.019063      Training Accuracy    : 0.000406
+Validation Loss  : 1.083404     Validation Accuracy  : 0.000001
+------------------------------Epoch 270/500------------------------------
+Training Loss    : 1.017477      Training Accuracy    : 0.000372
+Validation Loss  : 1.076370     Validation Accuracy  : 0.000016
+------------------------------Epoch 271/500------------------------------
+Training Loss    : 1.012343      Training Accuracy    : 0.000457
+Validation Loss  : 1.082106     Validation Accuracy  : 0.000000
+------------------------------Epoch 272/500------------------------------
+Training Loss    : 1.013597      Training Accuracy    : 0.000412
+Validation Loss  : 1.079128     Validation Accuracy  : 0.000001
+------------------------------Epoch 273/500------------------------------
+Training Loss    : 1.014248      Training Accuracy    : 0.000425
+Validation Loss  : 1.082013     Validation Accuracy  : 0.000023
+------------------------------Epoch 274/500------------------------------
+Training Loss    : 1.008417      Training Accuracy    : 0.000554
+Validation Loss  : 1.081579     Validation Accuracy  : 0.000001
+------------------------------Epoch 275/500------------------------------
+Training Loss    : 1.014364      Training Accuracy    : 0.000484
+Validation Loss  : 1.079951     Validation Accuracy  : 0.000001
+------------------------------Epoch 276/500------------------------------
+Training Loss    : 1.012439      Training Accuracy    : 0.000567
+Validation Loss  : 1.078907     Validation Accuracy  : 0.000001
+------------------------------Epoch 277/500------------------------------
+Training Loss    : 1.008662      Training Accuracy    : 0.000391
+Validation Loss  : 1.078317     Validation Accuracy  : 0.000000
+------------------------------Epoch 278/500------------------------------
+Training Loss    : 1.004736      Training Accuracy    : 0.000388
+Validation Loss  : 1.079476     Validation Accuracy  : 0.000001
+------------------------------Epoch 279/500------------------------------
+Training Loss    : 1.019253      Training Accuracy    : 0.000635
+Validation Loss  : 1.078157     Validation Accuracy  : 0.000001
+------------------------------Epoch 280/500------------------------------
+Adjusting learning rate of group 0 to 2.2877e-03.
+Training Loss    : 1.010088      Training Accuracy    : 0.000541
+Validation Loss  : 1.077310     Validation Accuracy  : 0.000000
+------------------------------Epoch 281/500------------------------------
+Training Loss    : 1.006549      Training Accuracy    : 0.000288
+Validation Loss  : 1.079690     Validation Accuracy  : 0.000001
+------------------------------Epoch 282/500------------------------------
+Training Loss    : 1.011448      Training Accuracy    : 0.000589
+Validation Loss  : 1.082256     Validation Accuracy  : 0.000003
+------------------------------Epoch 283/500------------------------------
+Training Loss    : 1.008783      Training Accuracy    : 0.000329
+Validation Loss  : 1.081232     Validation Accuracy  : 0.000001
+------------------------------Epoch 284/500------------------------------
+Training Loss    : 1.007895      Training Accuracy    : 0.000324
+Validation Loss  : 1.076710     Validation Accuracy  : 0.000001
+------------------------------Epoch 285/500------------------------------
+Training Loss    : 1.011423      Training Accuracy    : 0.000521
+Validation Loss  : 1.083051     Validation Accuracy  : 0.000000
+------------------------------Epoch 286/500------------------------------
+Training Loss    : 1.004955      Training Accuracy    : 0.000272
+Validation Loss  : 1.080455     Validation Accuracy  : 0.000000
+------------------------------Epoch 287/500------------------------------
+Training Loss    : 1.011856      Training Accuracy    : 0.000435
+Validation Loss  : 1.081203     Validation Accuracy  : 0.000001
+------------------------------Epoch 288/500------------------------------
+Training Loss    : 1.014274      Training Accuracy    : 0.000343
+Validation Loss  : 1.081959     Validation Accuracy  : 0.000019
+------------------------------Epoch 289/500------------------------------
+Training Loss    : 1.010397      Training Accuracy    : 0.000405
+Validation Loss  : 1.075903     Validation Accuracy  : 0.000001
+------------------------------Epoch 290/500------------------------------
+Training Loss    : 1.011563      Training Accuracy    : 0.000400
+Validation Loss  : 1.079350     Validation Accuracy  : 0.000002
+------------------------------Epoch 291/500------------------------------
+Training Loss    : 1.008329      Training Accuracy    : 0.000454
+Validation Loss  : 1.082559     Validation Accuracy  : 0.000003
+------------------------------Epoch 292/500------------------------------
+Training Loss    : 1.010742      Training Accuracy    : 0.000435
+Validation Loss  : 1.077405     Validation Accuracy  : 0.000001
+------------------------------Epoch 293/500------------------------------
+Training Loss    : 1.008257      Training Accuracy    : 0.000535
+Validation Loss  : 1.077321     Validation Accuracy  : 0.000003
+------------------------------Epoch 294/500------------------------------
+Training Loss    : 1.011065      Training Accuracy    : 0.000536
+Validation Loss  : 1.080722     Validation Accuracy  : 0.000001
+------------------------------Epoch 295/500------------------------------
+Training Loss    : 1.008397      Training Accuracy    : 0.000356
+Validation Loss  : 1.077011     Validation Accuracy  : 0.000002
+------------------------------Epoch 296/500------------------------------
+Training Loss    : 1.010434      Training Accuracy    : 0.000496
+Validation Loss  : 1.078159     Validation Accuracy  : 0.000002
+------------------------------Epoch 297/500------------------------------
+Training Loss    : 1.005824      Training Accuracy    : 0.000327
+Validation Loss  : 1.087074     Validation Accuracy  : 0.000002
+------------------------------Epoch 298/500------------------------------
+Training Loss    : 1.004124      Training Accuracy    : 0.000316
+Validation Loss  : 1.078788     Validation Accuracy  : 0.000003
+------------------------------Epoch 299/500------------------------------
+Training Loss    : 1.008550      Training Accuracy    : 0.000422
+Validation Loss  : 1.076673     Validation Accuracy  : 0.000001
+------------------------------Epoch 300/500------------------------------
+Adjusting learning rate of group 0 to 2.0589e-03.
+Training Loss    : 1.007828      Training Accuracy    : 0.000467
+Validation Loss  : 1.077795     Validation Accuracy  : 0.000005
+------------------------------Epoch 301/500------------------------------
+Training Loss    : 1.008017      Training Accuracy    : 0.000480
+Validation Loss  : 1.082060     Validation Accuracy  : 0.000001
+------------------------------Epoch 302/500------------------------------
+Training Loss    : 1.005543      Training Accuracy    : 0.000439
+Validation Loss  : 1.077622     Validation Accuracy  : 0.000000
+------------------------------Epoch 303/500------------------------------
+Training Loss    : 1.005590      Training Accuracy    : 0.000266
+Validation Loss  : 1.078213     Validation Accuracy  : 0.000001
+------------------------------Epoch 304/500------------------------------
+Training Loss    : 1.004112      Training Accuracy    : 0.000507
+Validation Loss  : 1.076048     Validation Accuracy  : 0.000001
+------------------------------Epoch 305/500------------------------------
+Training Loss    : 1.000051      Training Accuracy    : 0.000417
+Validation Loss  : 1.079384     Validation Accuracy  : 0.000001
+------------------------------Epoch 306/500------------------------------
+Training Loss    : 1.007506      Training Accuracy    : 0.000368
+Validation Loss  : 1.075314     Validation Accuracy  : 0.000004
+------------------------------Epoch 307/500------------------------------
+Training Loss    : 1.006564      Training Accuracy    : 0.000492
+Validation Loss  : 1.077882     Validation Accuracy  : 0.000001
+------------------------------Epoch 308/500------------------------------
+Training Loss    : 1.007329      Training Accuracy    : 0.000413
+Validation Loss  : 1.076823     Validation Accuracy  : 0.000000
+------------------------------Epoch 309/500------------------------------
+Training Loss    : 1.010400      Training Accuracy    : 0.000396
+Validation Loss  : 1.075454     Validation Accuracy  : 0.000003
+------------------------------Epoch 310/500------------------------------
+Training Loss    : 1.007262      Training Accuracy    : 0.000627
+Validation Loss  : 1.076658     Validation Accuracy  : 0.000001
+------------------------------Epoch 311/500------------------------------
+Training Loss    : 1.001778      Training Accuracy    : 0.000299
+Validation Loss  : 1.081329     Validation Accuracy  : 0.000002
+------------------------------Epoch 312/500------------------------------
+Training Loss    : 1.006613      Training Accuracy    : 0.000574
+Validation Loss  : 1.080189     Validation Accuracy  : 0.000001
+------------------------------Epoch 313/500------------------------------
+Training Loss    : 1.006509      Training Accuracy    : 0.000431
+Validation Loss  : 1.078484     Validation Accuracy  : 0.000001
+------------------------------Epoch 314/500------------------------------
+Training Loss    : 1.009794      Training Accuracy    : 0.000426
+Validation Loss  : 1.077684     Validation Accuracy  : 0.000003
+------------------------------Epoch 315/500------------------------------
+Training Loss    : 1.008097      Training Accuracy    : 0.000433
+Validation Loss  : 1.076977     Validation Accuracy  : 0.000001
+------------------------------Epoch 316/500------------------------------
+Training Loss    : 1.012362      Training Accuracy    : 0.000661
+Validation Loss  : 1.077619     Validation Accuracy  : 0.000001
+------------------------------Epoch 317/500------------------------------
+Training Loss    : 1.002411      Training Accuracy    : 0.000331
+Validation Loss  : 1.081816     Validation Accuracy  : 0.000001
+------------------------------Epoch 318/500------------------------------
+Training Loss    : 1.008891      Training Accuracy    : 0.000464
+Validation Loss  : 1.077867     Validation Accuracy  : 0.000001
+------------------------------Epoch 319/500------------------------------
+Training Loss    : 1.008213      Training Accuracy    : 0.000424
+Validation Loss  : 1.077774     Validation Accuracy  : 0.000001
+------------------------------Epoch 320/500------------------------------
+Adjusting learning rate of group 0 to 1.8530e-03.
+Training Loss    : 1.001906      Training Accuracy    : 0.000339
+Validation Loss  : 1.076954     Validation Accuracy  : 0.000002
+------------------------------Epoch 321/500------------------------------
+Training Loss    : 1.004206      Training Accuracy    : 0.000555
+Validation Loss  : 1.077317     Validation Accuracy  : 0.000011
+------------------------------Epoch 322/500------------------------------
+Training Loss    : 1.005723      Training Accuracy    : 0.000515
+Validation Loss  : 1.076122     Validation Accuracy  : 0.000001
+------------------------------Epoch 323/500------------------------------
+Training Loss    : 1.001744      Training Accuracy    : 0.000376
+Validation Loss  : 1.081580     Validation Accuracy  : 0.000000
+------------------------------Epoch 324/500------------------------------
+Training Loss    : 1.004487      Training Accuracy    : 0.000441
+Validation Loss  : 1.082650     Validation Accuracy  : 0.000002
+------------------------------Epoch 325/500------------------------------
+Training Loss    : 1.011328      Training Accuracy    : 0.000456
+Validation Loss  : 1.080666     Validation Accuracy  : 0.000001
+------------------------------Epoch 326/500------------------------------
+Training Loss    : 1.004189      Training Accuracy    : 0.000428
+Validation Loss  : 1.074754     Validation Accuracy  : 0.000001
+------------------------------Epoch 327/500------------------------------
+Training Loss    : 1.006721      Training Accuracy    : 0.000420
+Validation Loss  : 1.078326     Validation Accuracy  : 0.000002
+------------------------------Epoch 328/500------------------------------
+Training Loss    : 1.005846      Training Accuracy    : 0.000431
+Validation Loss  : 1.077097     Validation Accuracy  : 0.000000
+------------------------------Epoch 329/500------------------------------
+Training Loss    : 1.010831      Training Accuracy    : 0.000339
+Validation Loss  : 1.080410     Validation Accuracy  : 0.000001
+------------------------------Epoch 330/500------------------------------
+Training Loss    : 1.010060      Training Accuracy    : 0.000487
+Validation Loss  : 1.078695     Validation Accuracy  : 0.000000
+------------------------------Epoch 331/500------------------------------
+Training Loss    : 1.002146      Training Accuracy    : 0.000629
+Validation Loss  : 1.076243     Validation Accuracy  : 0.000001
+------------------------------Epoch 332/500------------------------------
+Training Loss    : 1.007460      Training Accuracy    : 0.000485
+Validation Loss  : 1.076233     Validation Accuracy  : 0.000000
+------------------------------Epoch 333/500------------------------------
+Training Loss    : 1.006659      Training Accuracy    : 0.000670
+Validation Loss  : 1.078656     Validation Accuracy  : 0.000002
+------------------------------Epoch 334/500------------------------------
+Training Loss    : 1.006809      Training Accuracy    : 0.000769
+Validation Loss  : 1.081073     Validation Accuracy  : 0.000000
+------------------------------Epoch 335/500------------------------------
+Training Loss    : 1.004757      Training Accuracy    : 0.000500
+Validation Loss  : 1.080318     Validation Accuracy  : 0.000001
+------------------------------Epoch 336/500------------------------------
+Training Loss    : 1.006281      Training Accuracy    : 0.000524
+Validation Loss  : 1.079183     Validation Accuracy  : 0.000002
+------------------------------Epoch 337/500------------------------------
+Training Loss    : 1.007489      Training Accuracy    : 0.000484
+Validation Loss  : 1.081659     Validation Accuracy  : 0.000013
+------------------------------Epoch 338/500------------------------------
+Training Loss    : 1.005605      Training Accuracy    : 0.000481
+Validation Loss  : 1.078258     Validation Accuracy  : 0.000001
+------------------------------Epoch 339/500------------------------------
+Training Loss    : 1.003440      Training Accuracy    : 0.000511
+Validation Loss  : 1.079259     Validation Accuracy  : 0.000005
+------------------------------Epoch 340/500------------------------------
+Adjusting learning rate of group 0 to 1.6677e-03.
+Training Loss    : 1.004521      Training Accuracy    : 0.000550
+Validation Loss  : 1.080192     Validation Accuracy  : 0.000002
+------------------------------Epoch 341/500------------------------------
+Training Loss    : 1.004888      Training Accuracy    : 0.000424
+Validation Loss  : 1.079833     Validation Accuracy  : 0.000001
+------------------------------Epoch 342/500------------------------------
+Training Loss    : 1.006128      Training Accuracy    : 0.000532
+Validation Loss  : 1.081642     Validation Accuracy  : 0.000013
+------------------------------Epoch 343/500------------------------------
+Training Loss    : 1.006975      Training Accuracy    : 0.000370
+Validation Loss  : 1.075309     Validation Accuracy  : 0.000001
+------------------------------Epoch 344/500------------------------------
+Training Loss    : 1.000563      Training Accuracy    : 0.000416
+Validation Loss  : 1.078295     Validation Accuracy  : 0.000002
+------------------------------Epoch 345/500------------------------------
+Training Loss    : 1.007138      Training Accuracy    : 0.000424
+Validation Loss  : 1.083137     Validation Accuracy  : 0.000002
+------------------------------Epoch 346/500------------------------------
+Training Loss    : 1.001126      Training Accuracy    : 0.000427
+Validation Loss  : 1.078209     Validation Accuracy  : 0.000001
+------------------------------Epoch 347/500------------------------------
+Training Loss    : 1.004278      Training Accuracy    : 0.000358
+Validation Loss  : 1.079520     Validation Accuracy  : 0.000005
+------------------------------Epoch 348/500------------------------------
+Training Loss    : 1.005479      Training Accuracy    : 0.000533
+Validation Loss  : 1.077741     Validation Accuracy  : 0.000001
+------------------------------Epoch 349/500------------------------------
+Training Loss    : 1.000951      Training Accuracy    : 0.000520
+Validation Loss  : 1.084108     Validation Accuracy  : 0.000001
+------------------------------Epoch 350/500------------------------------
+Training Loss    : 1.000342      Training Accuracy    : 0.000420
+Validation Loss  : 1.079738     Validation Accuracy  : 0.000006
+------------------------------Epoch 351/500------------------------------
+Training Loss    : 1.008882      Training Accuracy    : 0.000508
+Validation Loss  : 1.082717     Validation Accuracy  : 0.000000
+------------------------------Epoch 352/500------------------------------
+Training Loss    : 1.001418      Training Accuracy    : 0.000609
+Validation Loss  : 1.077863     Validation Accuracy  : 0.000002
+------------------------------Epoch 353/500------------------------------
+Training Loss    : 1.004916      Training Accuracy    : 0.000477
+Validation Loss  : 1.081323     Validation Accuracy  : 0.000000
+------------------------------Epoch 354/500------------------------------
+Training Loss    : 1.004580      Training Accuracy    : 0.000462
+Validation Loss  : 1.077598     Validation Accuracy  : 0.000001
+------------------------------Epoch 355/500------------------------------
+Training Loss    : 0.997506      Training Accuracy    : 0.000540
+Validation Loss  : 1.080682     Validation Accuracy  : 0.000001
+------------------------------Epoch 356/500------------------------------
+Training Loss    : 1.002500      Training Accuracy    : 0.000447
+Validation Loss  : 1.073479     Validation Accuracy  : 0.000007
+------------------------------Epoch 357/500------------------------------
+Training Loss    : 1.002428      Training Accuracy    : 0.000593
+Validation Loss  : 1.082497     Validation Accuracy  : 0.000010
+------------------------------Epoch 358/500------------------------------
+Training Loss    : 1.001885      Training Accuracy    : 0.000800
+Validation Loss  : 1.076818     Validation Accuracy  : 0.000003
+------------------------------Epoch 359/500------------------------------
+Training Loss    : 1.002321      Training Accuracy    : 0.000466
+Validation Loss  : 1.076994     Validation Accuracy  : 0.000002
+------------------------------Epoch 360/500------------------------------
+Adjusting learning rate of group 0 to 1.5009e-03.
+Training Loss    : 1.002480      Training Accuracy    : 0.000577
+Validation Loss  : 1.081934     Validation Accuracy  : 0.000001
+------------------------------Epoch 361/500------------------------------
+Training Loss    : 1.000025      Training Accuracy    : 0.000600
+Validation Loss  : 1.076974     Validation Accuracy  : 0.000001
+------------------------------Epoch 362/500------------------------------
+Training Loss    : 0.998687      Training Accuracy    : 0.000523
+Validation Loss  : 1.078349     Validation Accuracy  : 0.000006
+------------------------------Epoch 363/500------------------------------
+Training Loss    : 0.999530      Training Accuracy    : 0.000579
+Validation Loss  : 1.077637     Validation Accuracy  : 0.000008
+------------------------------Epoch 364/500------------------------------
+Training Loss    : 1.001668      Training Accuracy    : 0.000450
+Validation Loss  : 1.084553     Validation Accuracy  : 0.000001
+------------------------------Epoch 365/500------------------------------
+Training Loss    : 1.002130      Training Accuracy    : 0.000487
+Validation Loss  : 1.080388     Validation Accuracy  : 0.000002
+------------------------------Epoch 366/500------------------------------
+Training Loss    : 1.008940      Training Accuracy    : 0.000604
+Validation Loss  : 1.084794     Validation Accuracy  : 0.000001
+------------------------------Epoch 367/500------------------------------
+Training Loss    : 1.005224      Training Accuracy    : 0.000468
+Validation Loss  : 1.080058     Validation Accuracy  : 0.000001
+------------------------------Epoch 368/500------------------------------
+Training Loss    : 1.001105      Training Accuracy    : 0.000676
+Validation Loss  : 1.077112     Validation Accuracy  : 0.000002
+------------------------------Epoch 369/500------------------------------
+Training Loss    : 0.997710      Training Accuracy    : 0.000574
+Validation Loss  : 1.080069     Validation Accuracy  : 0.000000
+------------------------------Epoch 370/500------------------------------
+Training Loss    : 1.000361      Training Accuracy    : 0.000565
+Validation Loss  : 1.081605     Validation Accuracy  : 0.000001
+------------------------------Epoch 371/500------------------------------
+Training Loss    : 1.003450      Training Accuracy    : 0.000576
+Validation Loss  : 1.080725     Validation Accuracy  : 0.000001
+------------------------------Epoch 372/500------------------------------
+Training Loss    : 1.003742      Training Accuracy    : 0.000508
+Validation Loss  : 1.081750     Validation Accuracy  : 0.000002
+------------------------------Epoch 373/500------------------------------
+Training Loss    : 0.995703      Training Accuracy    : 0.000687
+Validation Loss  : 1.079451     Validation Accuracy  : 0.000000
+------------------------------Epoch 374/500------------------------------
+Training Loss    : 1.001578      Training Accuracy    : 0.000430
+Validation Loss  : 1.083698     Validation Accuracy  : 0.000000
+------------------------------Epoch 375/500------------------------------
+Training Loss    : 1.002347      Training Accuracy    : 0.000434
+Validation Loss  : 1.079042     Validation Accuracy  : 0.000000
+------------------------------Epoch 376/500------------------------------
+Training Loss    : 1.004526      Training Accuracy    : 0.000625
+Validation Loss  : 1.076516     Validation Accuracy  : 0.000001
+------------------------------Epoch 377/500------------------------------
+Training Loss    : 1.003704      Training Accuracy    : 0.000530
+Validation Loss  : 1.084443     Validation Accuracy  : 0.000001
+------------------------------Epoch 378/500------------------------------
+Training Loss    : 1.006340      Training Accuracy    : 0.000739
+Validation Loss  : 1.081457     Validation Accuracy  : 0.000001
+------------------------------Epoch 379/500------------------------------
+Training Loss    : 1.003686      Training Accuracy    : 0.000543
+Validation Loss  : 1.080690     Validation Accuracy  : 0.000001
+------------------------------Epoch 380/500------------------------------
+Adjusting learning rate of group 0 to 1.3509e-03.
+Training Loss    : 1.000217      Training Accuracy    : 0.000625
+Validation Loss  : 1.083264     Validation Accuracy  : 0.000002
+------------------------------Epoch 381/500------------------------------
+Training Loss    : 1.001636      Training Accuracy    : 0.000441
+Validation Loss  : 1.081020     Validation Accuracy  : 0.000003
+------------------------------Epoch 382/500------------------------------
+Training Loss    : 1.002021      Training Accuracy    : 0.000622
+Validation Loss  : 1.080438     Validation Accuracy  : 0.000000
+------------------------------Epoch 383/500------------------------------
+Training Loss    : 1.000595      Training Accuracy    : 0.000468
+Validation Loss  : 1.080910     Validation Accuracy  : 0.000002
+------------------------------Epoch 384/500------------------------------
+Training Loss    : 1.004860      Training Accuracy    : 0.000508
+Validation Loss  : 1.079287     Validation Accuracy  : 0.000003
+------------------------------Epoch 385/500------------------------------
+Training Loss    : 0.995497      Training Accuracy    : 0.000527
+Validation Loss  : 1.080713     Validation Accuracy  : 0.000001
+------------------------------Epoch 386/500------------------------------
+Training Loss    : 0.998405      Training Accuracy    : 0.000556
+Validation Loss  : 1.082272     Validation Accuracy  : 0.000001
+------------------------------Epoch 387/500------------------------------
+Training Loss    : 1.000914      Training Accuracy    : 0.000625
+Validation Loss  : 1.080821     Validation Accuracy  : 0.000001
+------------------------------Epoch 388/500------------------------------
+Training Loss    : 1.007665      Training Accuracy    : 0.000441
+Validation Loss  : 1.077688     Validation Accuracy  : 0.000020
+------------------------------Epoch 389/500------------------------------
+Training Loss    : 1.000741      Training Accuracy    : 0.000434
+Validation Loss  : 1.076365     Validation Accuracy  : 0.000002
+------------------------------Epoch 390/500------------------------------
+Training Loss    : 1.002113      Training Accuracy    : 0.000462
+Validation Loss  : 1.083898     Validation Accuracy  : 0.000001
+------------------------------Epoch 391/500------------------------------
+Training Loss    : 0.996118      Training Accuracy    : 0.000674
+Validation Loss  : 1.080968     Validation Accuracy  : 0.000003
+------------------------------Epoch 392/500------------------------------
+Training Loss    : 1.006268      Training Accuracy    : 0.000541
+Validation Loss  : 1.085326     Validation Accuracy  : 0.000001
+------------------------------Epoch 393/500------------------------------
+Training Loss    : 1.001050      Training Accuracy    : 0.000611
+Validation Loss  : 1.082199     Validation Accuracy  : 0.000001
+------------------------------Epoch 394/500------------------------------
+Training Loss    : 1.000003      Training Accuracy    : 0.000543
+Validation Loss  : 1.075725     Validation Accuracy  : 0.000003
+------------------------------Epoch 395/500------------------------------
+Training Loss    : 1.002425      Training Accuracy    : 0.000689
+Validation Loss  : 1.077233     Validation Accuracy  : 0.000002
+------------------------------Epoch 396/500------------------------------
+Training Loss    : 1.002097      Training Accuracy    : 0.000396
+Validation Loss  : 1.076549     Validation Accuracy  : 0.000002
+------------------------------Epoch 397/500------------------------------
+Training Loss    : 1.003329      Training Accuracy    : 0.000638
+Validation Loss  : 1.082165     Validation Accuracy  : 0.000002
+------------------------------Epoch 398/500------------------------------
+Training Loss    : 0.998404      Training Accuracy    : 0.000544
+Validation Loss  : 1.076963     Validation Accuracy  : 0.000012
+------------------------------Epoch 399/500------------------------------
+Training Loss    : 1.004182      Training Accuracy    : 0.000537
+Validation Loss  : 1.077981     Validation Accuracy  : 0.000001
+------------------------------Epoch 400/500------------------------------
+Adjusting learning rate of group 0 to 1.2158e-03.
+Training Loss    : 1.002051      Training Accuracy    : 0.000650
+Validation Loss  : 1.078129     Validation Accuracy  : 0.000002
+------------------------------Epoch 401/500------------------------------
+Training Loss    : 0.999886      Training Accuracy    : 0.000375
+Validation Loss  : 1.082488     Validation Accuracy  : 0.000001
+------------------------------Epoch 402/500------------------------------
+Training Loss    : 0.995645      Training Accuracy    : 0.000570
+Validation Loss  : 1.081097     Validation Accuracy  : 0.000001
+------------------------------Epoch 403/500------------------------------
+Training Loss    : 0.996047      Training Accuracy    : 0.000391
+Validation Loss  : 1.080910     Validation Accuracy  : 0.000003
+------------------------------Epoch 404/500------------------------------
+Training Loss    : 0.999581      Training Accuracy    : 0.000464
+Validation Loss  : 1.077939     Validation Accuracy  : 0.000002
+------------------------------Epoch 405/500------------------------------
+Training Loss    : 0.999589      Training Accuracy    : 0.000387
+Validation Loss  : 1.079619     Validation Accuracy  : 0.000001
+------------------------------Epoch 406/500------------------------------
+Training Loss    : 0.993823      Training Accuracy    : 0.000465
+Validation Loss  : 1.077799     Validation Accuracy  : 0.000001
+------------------------------Epoch 407/500------------------------------
+Training Loss    : 0.999812      Training Accuracy    : 0.000552
+Validation Loss  : 1.074766     Validation Accuracy  : 0.000001
+------------------------------Epoch 408/500------------------------------
+Training Loss    : 0.999936      Training Accuracy    : 0.000458
+Validation Loss  : 1.079903     Validation Accuracy  : 0.000003
+------------------------------Epoch 409/500------------------------------
+Training Loss    : 0.999679      Training Accuracy    : 0.000602
+Validation Loss  : 1.078012     Validation Accuracy  : 0.000002
+------------------------------Epoch 410/500------------------------------
+Training Loss    : 0.996999      Training Accuracy    : 0.000650
+Validation Loss  : 1.076951     Validation Accuracy  : 0.000015
+------------------------------Epoch 411/500------------------------------
+Training Loss    : 1.000719      Training Accuracy    : 0.000542
+Validation Loss  : 1.078234     Validation Accuracy  : 0.000001
+------------------------------Epoch 412/500------------------------------
+Training Loss    : 1.001129      Training Accuracy    : 0.000458
+Validation Loss  : 1.078620     Validation Accuracy  : 0.000001
+------------------------------Epoch 413/500------------------------------
+Training Loss    : 0.995582      Training Accuracy    : 0.000463
+Validation Loss  : 1.075982     Validation Accuracy  : 0.000001
+------------------------------Epoch 414/500------------------------------
+Training Loss    : 0.995936      Training Accuracy    : 0.000390
+Validation Loss  : 1.077652     Validation Accuracy  : 0.000002
+------------------------------Epoch 415/500------------------------------
+Training Loss    : 0.998123      Training Accuracy    : 0.000678
+Validation Loss  : 1.081422     Validation Accuracy  : 0.000001
+------------------------------Epoch 416/500------------------------------
+Training Loss    : 0.997134      Training Accuracy    : 0.000486
+Validation Loss  : 1.076419     Validation Accuracy  : 0.000000
+------------------------------Epoch 417/500------------------------------
+Training Loss    : 1.003691      Training Accuracy    : 0.000719
+Validation Loss  : 1.078838     Validation Accuracy  : 0.000001
+------------------------------Epoch 418/500------------------------------
+Training Loss    : 0.998663      Training Accuracy    : 0.000637
+Validation Loss  : 1.077318     Validation Accuracy  : 0.000001
+------------------------------Epoch 419/500------------------------------
+Training Loss    : 1.001577      Training Accuracy    : 0.000557
+Validation Loss  : 1.079219     Validation Accuracy  : 0.000005
+------------------------------Epoch 420/500------------------------------
+Adjusting learning rate of group 0 to 1.0942e-03.
+Training Loss    : 0.998547      Training Accuracy    : 0.000635
+Validation Loss  : 1.077746     Validation Accuracy  : 0.000003
+------------------------------Epoch 421/500------------------------------
+Training Loss    : 0.997002      Training Accuracy    : 0.000492
+Validation Loss  : 1.076607     Validation Accuracy  : 0.000001
+------------------------------Epoch 422/500------------------------------
+Training Loss    : 0.995379      Training Accuracy    : 0.000636
+Validation Loss  : 1.077903     Validation Accuracy  : 0.000002
+------------------------------Epoch 423/500------------------------------
+Training Loss    : 0.997304      Training Accuracy    : 0.000475
+Validation Loss  : 1.078272     Validation Accuracy  : 0.000001
+------------------------------Epoch 424/500------------------------------
+Training Loss    : 0.998485      Training Accuracy    : 0.000575
+Validation Loss  : 1.077848     Validation Accuracy  : 0.000002
+------------------------------Epoch 425/500------------------------------
+Training Loss    : 0.998993      Training Accuracy    : 0.000704
+Validation Loss  : 1.080355     Validation Accuracy  : 0.000001
+------------------------------Epoch 426/500------------------------------
+Training Loss    : 1.000270      Training Accuracy    : 0.000642
+Validation Loss  : 1.080574     Validation Accuracy  : 0.000001
+------------------------------Epoch 427/500------------------------------
+Training Loss    : 0.997593      Training Accuracy    : 0.000475
+Validation Loss  : 1.075977     Validation Accuracy  : 0.000028
+------------------------------Epoch 428/500------------------------------
+Training Loss    : 0.998221      Training Accuracy    : 0.000506
+Validation Loss  : 1.082706     Validation Accuracy  : 0.000003
+------------------------------Epoch 429/500------------------------------
+Training Loss    : 0.997752      Training Accuracy    : 0.000641
+Validation Loss  : 1.081016     Validation Accuracy  : 0.000004
+------------------------------Epoch 430/500------------------------------
+Training Loss    : 0.994347      Training Accuracy    : 0.000672
+Validation Loss  : 1.076256     Validation Accuracy  : 0.000001
+------------------------------Epoch 431/500------------------------------
+Training Loss    : 1.001576      Training Accuracy    : 0.000638
+Validation Loss  : 1.077108     Validation Accuracy  : 0.000001
+------------------------------Epoch 432/500------------------------------
+Training Loss    : 1.002912      Training Accuracy    : 0.000574
+Validation Loss  : 1.077260     Validation Accuracy  : 0.000003
+------------------------------Epoch 433/500------------------------------
+Training Loss    : 1.003754      Training Accuracy    : 0.000456
+Validation Loss  : 1.077208     Validation Accuracy  : 0.013680
+------------------------------Epoch 434/500------------------------------
+Training Loss    : 1.002529      Training Accuracy    : 0.000572
+Validation Loss  : 1.078049     Validation Accuracy  : 0.000007
+------------------------------Epoch 435/500------------------------------
+Training Loss    : 1.004808      Training Accuracy    : 0.000501
+Validation Loss  : 1.076536     Validation Accuracy  : 0.000001
+------------------------------Epoch 436/500------------------------------
+Training Loss    : 0.998121      Training Accuracy    : 0.000687
+Validation Loss  : 1.078041     Validation Accuracy  : 0.000003
+------------------------------Epoch 437/500------------------------------
+Training Loss    : 0.997975      Training Accuracy    : 0.000536
+Validation Loss  : 1.077665     Validation Accuracy  : 0.000000
+------------------------------Epoch 438/500------------------------------
+Training Loss    : 0.998080      Training Accuracy    : 0.000638
+Validation Loss  : 1.082557     Validation Accuracy  : 0.000001
+------------------------------Epoch 439/500------------------------------
+Training Loss    : 0.995942      Training Accuracy    : 0.000510
+Validation Loss  : 1.075062     Validation Accuracy  : 0.000001
+------------------------------Epoch 440/500------------------------------
+Adjusting learning rate of group 0 to 9.8477e-04.
+Training Loss    : 0.992722      Training Accuracy    : 0.000529
+Validation Loss  : 1.085024     Validation Accuracy  : 0.000003
+------------------------------Epoch 441/500------------------------------
+Training Loss    : 1.001701      Training Accuracy    : 0.000626
+Validation Loss  : 1.077719     Validation Accuracy  : 0.000002
+------------------------------Epoch 442/500------------------------------
+Training Loss    : 0.997771      Training Accuracy    : 0.000456
+Validation Loss  : 1.078339     Validation Accuracy  : 0.000002
+------------------------------Epoch 443/500------------------------------
+Training Loss    : 0.995923      Training Accuracy    : 0.000503
+Validation Loss  : 1.075274     Validation Accuracy  : 0.000009
+------------------------------Epoch 444/500------------------------------
+Training Loss    : 0.999909      Training Accuracy    : 0.000529
+Validation Loss  : 1.080279     Validation Accuracy  : 0.000002
+------------------------------Epoch 445/500------------------------------
+Training Loss    : 1.000318      Training Accuracy    : 0.000561
+Validation Loss  : 1.082673     Validation Accuracy  : 0.000003
+------------------------------Epoch 446/500------------------------------
+Training Loss    : 0.998703      Training Accuracy    : 0.000596
+Validation Loss  : 1.077630     Validation Accuracy  : 0.000001
+------------------------------Epoch 447/500------------------------------
+Training Loss    : 1.000222      Training Accuracy    : 0.000612
+Validation Loss  : 1.080675     Validation Accuracy  : 0.000003
+------------------------------Epoch 448/500------------------------------
+Training Loss    : 0.999763      Training Accuracy    : 0.000617
+Validation Loss  : 1.077358     Validation Accuracy  : 0.000004
+------------------------------Epoch 449/500------------------------------
+Training Loss    : 0.999136      Training Accuracy    : 0.000697
+Validation Loss  : 1.074344     Validation Accuracy  : 0.000001
+------------------------------Epoch 450/500------------------------------
+Training Loss    : 0.996718      Training Accuracy    : 0.000526
+Validation Loss  : 1.077236     Validation Accuracy  : 0.000000
+------------------------------Epoch 451/500------------------------------
+Training Loss    : 0.997353      Training Accuracy    : 0.000622
+Validation Loss  : 1.078937     Validation Accuracy  : 0.000004
+------------------------------Epoch 452/500------------------------------
+Training Loss    : 0.998974      Training Accuracy    : 0.000504
+Validation Loss  : 1.079796     Validation Accuracy  : 0.000003
+------------------------------Epoch 453/500------------------------------
+Training Loss    : 0.994824      Training Accuracy    : 0.000633
+Validation Loss  : 1.078180     Validation Accuracy  : 0.000004
+------------------------------Epoch 454/500------------------------------
+Training Loss    : 0.997466      Training Accuracy    : 0.000570
+Validation Loss  : 1.076471     Validation Accuracy  : 0.000004
+------------------------------Epoch 455/500------------------------------
+Training Loss    : 1.000455      Training Accuracy    : 0.000831
+Validation Loss  : 1.081977     Validation Accuracy  : 0.000003
+------------------------------Epoch 456/500------------------------------
+Training Loss    : 1.000396      Training Accuracy    : 0.000706
+Validation Loss  : 1.082672     Validation Accuracy  : 0.000001
+------------------------------Epoch 457/500------------------------------
+Training Loss    : 1.001768      Training Accuracy    : 0.000764
+Validation Loss  : 1.081746     Validation Accuracy  : 0.000003
+------------------------------Epoch 458/500------------------------------
+Training Loss    : 0.992801      Training Accuracy    : 0.000591
+Validation Loss  : 1.078145     Validation Accuracy  : 0.000001
+------------------------------Epoch 459/500------------------------------
+Training Loss    : 0.999221      Training Accuracy    : 0.000419
+Validation Loss  : 1.076144     Validation Accuracy  : 0.000010
+------------------------------Epoch 460/500------------------------------
+Adjusting learning rate of group 0 to 8.8629e-04.
+Training Loss    : 0.998197      Training Accuracy    : 0.000684
+Validation Loss  : 1.080914     Validation Accuracy  : 0.000000
+------------------------------Epoch 461/500------------------------------
+Training Loss    : 0.995351      Training Accuracy    : 0.000534
+Validation Loss  : 1.081958     Validation Accuracy  : 0.000003
+------------------------------Epoch 462/500------------------------------
+Training Loss    : 1.000629      Training Accuracy    : 0.000627
+Validation Loss  : 1.077617     Validation Accuracy  : 0.000009
+------------------------------Epoch 463/500------------------------------
+Training Loss    : 1.001399      Training Accuracy    : 0.000593
+Validation Loss  : 1.083366     Validation Accuracy  : 0.000004
+------------------------------Epoch 464/500------------------------------
+Training Loss    : 0.999401      Training Accuracy    : 0.000473
+Validation Loss  : 1.078744     Validation Accuracy  : 0.000010
+------------------------------Epoch 465/500------------------------------
+Training Loss    : 0.999370      Training Accuracy    : 0.000534
+Validation Loss  : 1.078492     Validation Accuracy  : 0.000004
+------------------------------Epoch 466/500------------------------------
+Training Loss    : 1.000071      Training Accuracy    : 0.000617
+Validation Loss  : 1.076575     Validation Accuracy  : 0.000004
+------------------------------Epoch 467/500------------------------------
+Training Loss    : 0.999230      Training Accuracy    : 0.000581
+Validation Loss  : 1.075799     Validation Accuracy  : 0.000001
+------------------------------Epoch 468/500------------------------------
+Training Loss    : 0.995263      Training Accuracy    : 0.000690
+Validation Loss  : 1.077419     Validation Accuracy  : 0.000001
+------------------------------Epoch 469/500------------------------------
+Training Loss    : 1.000012      Training Accuracy    : 0.000667
+Validation Loss  : 1.080069     Validation Accuracy  : 0.000016
+------------------------------Epoch 470/500------------------------------
+Training Loss    : 1.001185      Training Accuracy    : 0.000719
+Validation Loss  : 1.080681     Validation Accuracy  : 0.000001
+------------------------------Epoch 471/500------------------------------
+Training Loss    : 0.994169      Training Accuracy    : 0.000600
+Validation Loss  : 1.075730     Validation Accuracy  : 0.000001
+------------------------------Epoch 472/500------------------------------
+Training Loss    : 0.994794      Training Accuracy    : 0.000582
+Validation Loss  : 1.077505     Validation Accuracy  : 0.000000
+------------------------------Epoch 473/500------------------------------
+Training Loss    : 0.995820      Training Accuracy    : 0.000739
+Validation Loss  : 1.079875     Validation Accuracy  : 0.000003
+------------------------------Epoch 474/500------------------------------
+Training Loss    : 1.000608      Training Accuracy    : 0.000678
+Validation Loss  : 1.080499     Validation Accuracy  : 0.000010
+------------------------------Epoch 475/500------------------------------
+Training Loss    : 1.001216      Training Accuracy    : 0.000678
+Validation Loss  : 1.078851     Validation Accuracy  : 0.000002
+------------------------------Epoch 476/500------------------------------
+Training Loss    : 0.997170      Training Accuracy    : 0.000642
+Validation Loss  : 1.079549     Validation Accuracy  : 0.000005
+------------------------------Epoch 477/500------------------------------
+Training Loss    : 0.999159      Training Accuracy    : 0.000709
+Validation Loss  : 1.077771     Validation Accuracy  : 0.000000
+------------------------------Epoch 478/500------------------------------
+Training Loss    : 1.000421      Training Accuracy    : 0.000804
+Validation Loss  : 1.080635     Validation Accuracy  : 0.000006
+------------------------------Epoch 479/500------------------------------
+Training Loss    : 0.995267      Training Accuracy    : 0.000698
+Validation Loss  : 1.076453     Validation Accuracy  : 0.000002
+------------------------------Epoch 480/500------------------------------
+Adjusting learning rate of group 0 to 7.9766e-04.
+Training Loss    : 0.996718      Training Accuracy    : 0.000671
+Validation Loss  : 1.082256     Validation Accuracy  : 0.000008
+------------------------------Epoch 481/500------------------------------
+Training Loss    : 0.993773      Training Accuracy    : 0.000737
+Validation Loss  : 1.074417     Validation Accuracy  : 0.000003
+------------------------------Epoch 482/500------------------------------
+Training Loss    : 0.997566      Training Accuracy    : 0.000749
+Validation Loss  : 1.076520     Validation Accuracy  : 0.000003
+------------------------------Epoch 483/500------------------------------
+Training Loss    : 0.993396      Training Accuracy    : 0.000538
+Validation Loss  : 1.076605     Validation Accuracy  : 0.000001
+------------------------------Epoch 484/500------------------------------
+Training Loss    : 1.002482      Training Accuracy    : 0.000665
+Validation Loss  : 1.076783     Validation Accuracy  : 0.000001
+------------------------------Epoch 485/500------------------------------
+Training Loss    : 1.000810      Training Accuracy    : 0.000714
+Validation Loss  : 1.078178     Validation Accuracy  : 0.000002
+------------------------------Epoch 486/500------------------------------
+Training Loss    : 0.997451      Training Accuracy    : 0.000635
+Validation Loss  : 1.075590     Validation Accuracy  : 0.000001
+------------------------------Epoch 487/500------------------------------
+Training Loss    : 0.995263      Training Accuracy    : 0.000662
+Validation Loss  : 1.078467     Validation Accuracy  : 0.000020
+------------------------------Epoch 488/500------------------------------
+Training Loss    : 0.997894      Training Accuracy    : 0.000546
+Validation Loss  : 1.076663     Validation Accuracy  : 0.000001
+------------------------------Epoch 489/500------------------------------
+Training Loss    : 0.994068      Training Accuracy    : 0.000666
+Validation Loss  : 1.078313     Validation Accuracy  : 0.000001
+------------------------------Epoch 490/500------------------------------
+Training Loss    : 0.995881      Training Accuracy    : 0.000727
+Validation Loss  : 1.080493     Validation Accuracy  : 0.000001
+------------------------------Epoch 491/500------------------------------
+Training Loss    : 0.994086      Training Accuracy    : 0.000481
+Validation Loss  : 1.081067     Validation Accuracy  : 0.000005
+------------------------------Epoch 492/500------------------------------
+Training Loss    : 0.997289      Training Accuracy    : 0.000688
+Validation Loss  : 1.076929     Validation Accuracy  : 0.000003
+------------------------------Epoch 493/500------------------------------
+Training Loss    : 0.997590      Training Accuracy    : 0.000630
+Validation Loss  : 1.077650     Validation Accuracy  : 0.000003
+------------------------------Epoch 494/500------------------------------
+Training Loss    : 0.996058      Training Accuracy    : 0.000762
+Validation Loss  : 1.076583     Validation Accuracy  : 0.000003
+------------------------------Epoch 495/500------------------------------
+Training Loss    : 0.996541      Training Accuracy    : 0.000762
+Validation Loss  : 1.080092     Validation Accuracy  : 0.000005
+------------------------------Epoch 496/500------------------------------
+Training Loss    : 1.006472      Training Accuracy    : 0.000757
+Validation Loss  : 1.079855     Validation Accuracy  : 0.000002
+------------------------------Epoch 497/500------------------------------
+Training Loss    : 1.000758      Training Accuracy    : 0.000636
+Validation Loss  : 1.078457     Validation Accuracy  : 0.000002
+------------------------------Epoch 498/500------------------------------
+Training Loss    : 0.994645      Training Accuracy    : 0.000658
+Validation Loss  : 1.077355     Validation Accuracy  : 0.000004
+------------------------------Epoch 499/500------------------------------
+Training Loss    : 0.999058      Training Accuracy    : 0.000616
+Validation Loss  : 1.077731     Validation Accuracy  : 0.000001
+------------------------------Epoch 500/500------------------------------
+Adjusting learning rate of group 0 to 7.1790e-04.
+Training Loss    : 0.996488      Training Accuracy    : 0.000688
+Validation Loss  : 1.078545     Validation Accuracy  : 0.000002
+Images from the validation set
+Images from the training set
