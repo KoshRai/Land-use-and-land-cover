@@ -1,0 +1,2 @@
+## Land use and land cover segmentation
+This repository contains <b> highly unorganized code </b> for my land use and land cover project. Uploading to github for posterity. The PyTorch model files (.pt) were generated for checkpointing, but can't be uploaded here due to the 100MB limit.
